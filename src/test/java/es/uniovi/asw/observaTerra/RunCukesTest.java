@@ -1,4 +1,4 @@
-package es.uniovi.asw.observaTerra.cucumber;
+package es.uniovi.asw.observaTerra;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
