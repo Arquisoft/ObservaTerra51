@@ -13,6 +13,3 @@ Escenario: Calcular media de observaciones
     Cuando calculo la nota media
     Entonces obtengo el valor 2
     
-    
-     
-    
