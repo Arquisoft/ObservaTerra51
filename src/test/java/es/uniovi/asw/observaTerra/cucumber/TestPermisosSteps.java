@@ -11,8 +11,8 @@ import cucumber.api.java.es.Entonces;
 
 public class TestPermisosSteps {
 
-	List<Resource> listaEntrada;
-	List<Resource> listaControl;
+	private List<Resource> listaEntrada;
+	private List<Resource> listaControl;
 
 	@Dada("^una lista de recursos:$")
 	public void una_lista_de_recursos(List<Resource> arg1) throws Throwable {
@@ -22,7 +22,6 @@ public class TestPermisosSteps {
 	@Cuando("^calculo la lista de recursos para nivel de acceso (\\d+)$")
 	public void calculo_la_lista_de_recursos_para_nivel_de_acceso(int arg1)
 			throws Throwable {
-		// Express the Regexp above with the code you wish you had
 		int current_level = arg1;
 		List<Resource> listaFiltrada = new ArrayList<Resource>();
 		for (Resource res : listaEntrada) {
@@ -35,20 +34,14 @@ public class TestPermisosSteps {
 
 	@Entonces("^obtengo la lista:$")
 	public void obtengo_la_lista(List<Resource> arg1) throws Throwable {
-		// Express the Regexp above with the code you wish you had
-		// For automatic conversion, change DataTable to List<YourType>
 
 		listaControl = arg1;
 
 		for (int i = 0; i < listaEntrada.size(); i++) {
-			if (!listaEntrada.get(i).equals(listaEntrada.get(i))) {
-				assertEquals(1, 2);
-			}
+
+			assertEquals(listaControl.get(i), listaEntrada.get(i));
+
 		}
 	}
 
-	private static class Resource {
-		private String name;
-		private Double access_level;
-	}
 }
