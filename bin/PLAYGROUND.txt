@@ -1,8 +1,4 @@
-Cambiado desde LineaComandos - Notepad
-Metiendo nueva linea
-Cambiado desde Github
-Mezclando Github y Notepad
-Mezclado con Eclipse
-Cambiando en Eclipse pasando de GitHub
-Desde Github provocando conflicto con Eclipse
-Mezclando de nuevo desde Eclipse
+Cambios en clase de prácticas hechos por Labra
+Y nuevos cambio que sigue haciendo Labra
+y blah blahbblahblah...
+Cambios hechos por Gabriel: objetivo, conflictos nuevos
