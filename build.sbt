@@ -16,7 +16,8 @@ libraryDependencies ++= Seq(
   "info.cukes" % "cucumber-java" % "1.1.5" % "test",
   "info.cukes" % "cucumber-junit" % "1.1.5" % "test",
   "org.assertj" % "assertj-core" % "1.5.0" % "test",
-  "org.mockito" % "mockito-all" % "1.9.5" % "test"
+  "org.mockito" % "mockito-all" % "1.9.5" % "test",
+  "org.jsoup" % "jsoup" % "1.7.3"
 )     
 
 play.Project.playJavaSettings
