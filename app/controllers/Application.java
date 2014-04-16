@@ -19,6 +19,7 @@ import utils.ExcelReader;
 
 public class Application extends Controller {
 
+    //He cambiado el index. render antiguo por index2.render
     public static Result index() {
         return ok(index.render(Observation.all(),Country.all(),Indicator.all()));
     }
@@ -37,6 +38,10 @@ public class Application extends Controller {
     
     public static Result bars(String indicator) {
     	return ok(bars.render(Indicator.findByCode(indicator)));
+    }
+
+    public static Result home(){
+        return ok(index2.render());
     }
 
     static Form<Country>  	  countryForm     = Form.form(Country.class);

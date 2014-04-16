@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String="", nav: String = "")(content: Html)
 
 @import play.i18n._
 
@@ -7,29 +7,57 @@
 <html>
     <head>
         <title>@title</title>
+       <!-- CSS -->
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/bars.css")' >
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main2.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <!-- Shortcut Imgs -->
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <!-- Scripts -->
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
-    <header>
-        <a href="/"><img src="@routes.Assets.at("images/observaTerra.png")" alt="ObservaTerraLogo" />
-        <h1>ObservaTerra</h1></a>
-     </header>
-     <h1>@title</h1>    
 
-     @content
+        <div class="topbar">
+            <div class="fill">
+                <div class="container">
+                    <ul class="nav">
+                        <li>
+                            <a class="brand" href="@routes.Application.home()">Principal</a>
+                        </li>
+                        <li class="@("active".when(nav == "home"))">
+                            <a class="brand" href="@routes.Application.index()">Indice Viejo</a>
+                        </li>
+                        <li class="@("active".when(nav == "signup"))">
+                            <a class="brand" href="@routes.SignUp.blank()">Sign Up</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
 
-    <footer>
-    <nav>
-    @Messages.get("Admin")
-    <ul>
-    <li><a href="@routes.Application.showCountries">Countries</a>
-	<li><a href="@routes.Application.showIndicators">Indicators</a>
-	<li><a href="@routes.Application.showObservations">Observations</a>
-	</ul>
-    </nav>
-    </footer>
+        <div class="container">
+
+            <div class="content">
+
+
+                <div class="row">
+                    <div class="span14">
+                    @content
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class = "foot">
+                    <p class="small">
+                        ObservaTerra es un proyecto realizado en la Universidad de Oviedo.
+                    </p>
+                </div>
+            </footer>
+
+        </div>
+       </div>
+
     </body>
 </html>
