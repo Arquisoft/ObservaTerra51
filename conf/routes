@@ -53,6 +53,13 @@ GET           /ajax                                        controllers.Pruebas.a
 GET           /parallel                                    controllers.Pruebas.parallel()
 
 # Registro
-GET     /signup                     controllers.SignUp.blank()
-GET     /users/fakeuser             controllers.SignUp.edit()
-POST    /signup                     controllers.SignUp.submit()
+GET           /signup                                      controllers.SignUp.blank()
+GET           /users/fakeuser                              controllers.SignUp.edit()
+POST          /signup                                      controllers.SignUp.submit()
+
+#Log In (Mucho curro por hacer, sesion y demas)
+GET           /login                                       controllers.Login.blank()
+POST          /login                                       controllers.Login.submit()
+POST          /logoff                                      controllers.Login.logoff()
+GET           /logoff                                      controllers.Login.logoff()
+

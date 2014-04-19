@@ -1,4 +1,4 @@
-@(title: String="", nav: String = "")(content: Html)
+@(title: String="", nav: String = "")(content: Html)(implicit session: play.api.mvc.Session=null) <!-- First goes all the other non-implicit "parameters">
 
 @import play.i18n._
 
@@ -24,14 +24,34 @@
                 <div class="container">
                     <ul class="nav">
                         <li>
-                            <a class="brand" href="@routes.Application.home()">Principal</a>
+                            <a class="top" href="@routes.Application.home()">Principal</a>
                         </li>
                         <li class="@("active".when(nav == "home"))">
-                            <a class="brand" href="@routes.Application.index()">Indice Viejo</a>
+                            <a class="top" href="@routes.Application.index()">Indice Viejo</a>
                         </li>
                         <li class="@("active".when(nav == "signup"))">
-                            <a class="brand" href="@routes.SignUp.blank()">Sign Up</a>
+                            <a class="top" href="@routes.SignUp.blank()">Sign Up</a>
                         </li>
+
+                        <!-- Note that you dont need to put the "magic" -->
+                        <!-- Not Logged in -->
+                        @if(session != null){
+                        @if(session.get("login").equals(null) || session.get("login").equals("")) {
+                            <li class="@("active".when(nav == "login"))">
+                                <a class="top" href="@routes.Login.blank()">Log In</a>
+                            </li>
+                        <!-- Logged in -->
+                        }else{
+                            <li>
+                                <a class="top" href="@routes.Login.logoff">Disconnect</a>
+                            </li>
+                        }
+                        }else{
+                            <li class="@("active".when(nav == "login"))">
+                                <a class="top" href="@routes.Login.blank()">Log In</a>
+                            </li>
+                        }
+
                     </ul>
             </div>
         </div>
