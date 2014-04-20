@@ -26,15 +26,19 @@ public class Login extends Controller {
         // Check if the username is valid
         if(!filledForm.hasErrors()) {
 
-            //Login Test, if username is not equal to "admin" it rejects the submit petittion and shows the following message
-            if(!filledForm.get().username.equals("admin")) {
-                filledForm.reject("username", "User and password doesn't match");
-                filledForm.reject("password", "User and password doesn't match");
+            User user = User.findByUsername(filledForm.get().username);
 
-            //On the contrary if the username equals "admin" the user is correctly added to the Session and logged in.
-            }else{
-                session("login", filledForm.get().username);
-                return ok(index2.render());
+            if(user == null)
+                filledForm.reject("username", "User and password doesn't match");
+
+            else{
+                if(user.password.equals(filledForm.get().password))
+                {
+                    //We put the user in session
+                    session("login", filledForm.get().username);
+                    return ok(index2.render());
+                }else
+                    filledForm.reject("username", "User and password doesn't match");
             }
         }
 

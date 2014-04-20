@@ -4,7 +4,7 @@
 @import helper.twitterBootstrap._
 
 @title = {
-    Sign Up <small><a href="@routes.SignUp.edit">Or edit an existing user</a></small>
+    Sign Up
 }
 
 @main(nav = "signup") {
@@ -46,20 +46,20 @@
             <legend>Contact information</legend>
             
             @select(
-                signupForm("profile.country"), 
+                signupForm("country"),
                 options = options(Countries.list),
                 '_default -> "--- Choose a country ---",
                 '_label -> "Country",
-                '_error -> signupForm("profile.country").error.map(_.withMessage("Please select your country"))
+                '_error -> signupForm("country").error.map(_.withMessage("Please select your country"))
             )
             
             @textarea(
-                signupForm("profile.address"), 
+                signupForm("address"),
                 '_label -> "Address", 'cols -> 50
             )
             
             @inputText(
-                signupForm("profile.age"), 
+                signupForm("age"),
                 '_label -> "Age", 'class -> "mini",
                 '_showConstraints -> false
             )

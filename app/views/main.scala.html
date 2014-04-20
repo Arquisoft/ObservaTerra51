@@ -38,12 +38,12 @@
                         @if(session != null){
                         @if(session.get("login").equals(null) || session.get("login").equals("")) {
                             <li class="@("active".when(nav == "login"))">
-                                <a class="top" href="@routes.Login.blank()">Log In</a>
+                                <a class="top" href="@routes.Login.blank()">Log In &mdash; Username</a>
                             </li>
                         <!-- Logged in -->
                         }else{
                             <li>
-                                <a class="top" href="@routes.Login.logoff">Disconnect</a>
+                                <a class="top" href="@routes.Login.logoff">User &mdash; Disconnect</a>
                             </li>
                         }
                         }else{

@@ -1,15 +1,12 @@
 package models;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import com.fasterxml.jackson.databind.JsonNode;
 import play.db.ebean.Model;
 import play.libs.Json;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 public class Country extends Model {

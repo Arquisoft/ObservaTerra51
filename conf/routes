@@ -54,7 +54,6 @@ GET           /parallel                                    controllers.Pruebas.p
 
 # Registro
 GET           /signup                                      controllers.SignUp.blank()
-GET           /users/fakeuser                              controllers.SignUp.edit()
 POST          /signup                                      controllers.SignUp.submit()
 
 #Log In (Mucho curro por hacer, sesion y demas)

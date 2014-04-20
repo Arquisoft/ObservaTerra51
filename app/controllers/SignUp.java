@@ -1,13 +1,12 @@
 package controllers;
 
-import play.mvc.*;
-import play.data.*;
-import static play.data.Form.*;
-
-import views.html.signup.*;
-
-import models.*;
+import models.User;
+import play.data.Form;
+import play.mvc.Controller;
+import play.mvc.Result;
 import views.html.signup.form;
+
+import static play.data.Form.form;
 
 public class SignUp extends Controller {
     
@@ -21,17 +20,6 @@ public class SignUp extends Controller {
      */ 
     public static Result blank() {
         return ok(form.render(signupForm));
-    }
-  
-    /**
-     * Display a form pre-filled with an existing account.
-     */
-    public static Result edit() {
-        User existingUser = new User(
-            "fakeuser", "fake@gmail.com", "secret",
-            new User.Profile("France", null, 30)
-        );
-        return ok(form.render(signupForm.fill(existingUser)));
     }
   
     /**
@@ -54,16 +42,22 @@ public class SignUp extends Controller {
         
         // Check if the username is valid
         if(!filledForm.hasErrors()) {
-            if(filledForm.get().username.equals("admin") || filledForm.get().username.equals("guest")) {
+
+            User user = filledForm.get();
+            try {
+                User.create(user);
+
+            } catch (Exception e) {
                 filledForm.reject("username", "This username is already taken");
             }
+
         }
-        
+
         if(filledForm.hasErrors()) {
             return badRequest(form.render(filledForm));
         } else {
             User created = filledForm.get();
-            return ok(summary.render(created));
+            return ok(views.html.signup.summary.render(created));
         }
     }
   
