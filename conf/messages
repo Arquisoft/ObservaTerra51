@@ -1,6 +1,6 @@
 name = name
 create = Create
-Wellcome			= Wellcome to ObservaTerra
+Welcome			= Welcome to ObservaTerra
 countries 			= Countries
 Country				= Country
 Indicator			= Indicator
@@ -25,3 +25,9 @@ file.uploaded		= Uploaded file with {0} observations
 read.excel.error	= Error reading excel file
 upload.excel.file	= Upload Excel File
 upload				= Upload
+
+#navigation
+main	=	Main page
+old.index	=	Old index
+signup	=	Sign Up
+login	=	Log In

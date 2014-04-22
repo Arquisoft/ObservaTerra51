@@ -1,6 +1,6 @@
 name = nombre
 create = Crear
-Wellcome			= Bienvenido al portal ObservaTerra
+Welcome			= Bienvenido al portal ObservaTerra
 Country				= País
 Indicator			= Indicador
 Value				= Valor
@@ -26,3 +26,8 @@ read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
 
+#navigation
+main	=	Principal
+old.index	=	Índice viejo
+signup	=	Registro
+login	=	Inicia Sesión
