@@ -1,0 +1,53 @@
+@(user: User)
+
+@main(nav = "signup") {
+    
+    <h2>Your account:</h2>
+    
+    <h6>Username</h6>
+    
+    <p>
+        @user.username
+    </p>
+    
+    <h6>Email</h6>
+    
+    <p>
+        @user.email
+    </p>
+    
+    <h6>Password</h6>
+    
+    <p>
+        @user.password
+    </p>
+    
+    <h2>Additional informations:</h2>
+    
+    <h6>Country</h6>
+    
+    <p>
+        @user.country
+    </p>
+    
+    <h6>Address</h6>
+    
+    <p>
+        @if(user.address == null || user.address == "") {
+            <em>Not specified</em>
+        } else {
+            @user.address
+        }
+    </p>
+    
+    <h6>Age</h6>
+    
+    <p>
+        @if(user.age == null) {
+            <em>Not specified</em>
+        } else {
+            @user.age
+        }
+    </p>
+    
+}
