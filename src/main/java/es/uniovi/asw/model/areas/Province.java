@@ -1,4 +1,5 @@
-package es.uniovi.asw.model;
+package es.uniovi.asw.model.areas;
+
 
 /**
  * @version 1.0

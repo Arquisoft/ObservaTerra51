@@ -1,4 +1,6 @@
-package es.uniovi.asw.model;
+package es.uniovi.asw.model.areas;
+
+import es.uniovi.asw.model.interfaces.Area;
 
 /**
  * @version 1.0
@@ -12,14 +14,17 @@ public abstract class AbstractArea implements Area {
 
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public void finalize() throws Throwable {
 
 	}
