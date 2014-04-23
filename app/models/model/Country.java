@@ -1,23 +1,28 @@
-package models.model;
+package models;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+
 import java.util.List;
 
 /**
  * @version 1.0 with JPA
  */
 @Entity
-public class Country extends AbstractArea {
+@DiscriminatorValue("pais")
+public class Country extends Area {
 
-    /*@Id
-    @GeneratedValue
-    public Long id;*/
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Country(String name){
         this.name = name;
 	}
 
-    public static Finder<Long,Country> find = new Finder(Long.class, Country.class);
+    public static Finder<Long,Country> find = new Finder<Long, Country>(Long.class, Country.class);
 
     //CRUD
     public static List<Country> all(){

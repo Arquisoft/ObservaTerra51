@@ -1,4 +1,4 @@
-package models.model;
+package models;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -6,6 +6,7 @@ import play.db.ebean.Model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import java.util.List;
 
 /**
@@ -15,7 +16,12 @@ import java.util.List;
 @Entity
 public class Indicador extends Model{
 
-    @Id @GeneratedValue
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id @GeneratedValue
     public Long id;
 
     @Constraints.Required
@@ -25,7 +31,7 @@ public class Indicador extends Model{
         this.name = name;
 	}
 
-    public static Finder<Long, Indicador> find = new Finder(Long.class, Indicador.class);
+    public static Finder<Long, Indicador> find = new Finder<Long, Indicador>(Long.class, Indicador.class);
 
     //CRUD
     public static List<Indicador> all(){

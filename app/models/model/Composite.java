@@ -1,24 +1,27 @@
-package models.model;
+package models;
 
 import javax.persistence.Entity;
+
 import java.util.List;
 
 /**
  * @version 1.0 with JPA
  */
 @Entity
-public class Composite extends AbstractArea {
+public class Composite extends Area {
 
-    /*@Id @GeneratedValue
-    Long id;
-    */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
     public List<Area> areas;
 
 	public Composite(List<Area> areas){
         this.areas = areas;
 	}
 
-    public static Finder<Long,Composite> find = new Finder(Long.class, Composite.class);
+    public static Finder<Long,Composite> find = new Finder<Long, Composite>(Long.class, Composite.class);
 
     //CRUD
     public static List<Composite> all(){

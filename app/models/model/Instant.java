@@ -1,4 +1,4 @@
-package models.model;
+package models;
 
 /**
  * @version 1.0 with JPA

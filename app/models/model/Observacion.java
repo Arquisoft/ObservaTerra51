@@ -1,4 +1,4 @@
-package models.model;
+package models;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import java.util.List;
 
 /**
@@ -16,16 +17,21 @@ import java.util.List;
 @Entity
 public class Observacion extends Model{
 
-    @Id @GeneratedValue
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id @GeneratedValue
     Long id;
 
     @ManyToOne
 	public Provider provider; //Se modificara, en vez de ser Providers, seran usuarios que pertenecen a un Provider
     @ManyToOne
     public Indicador indicator;
-/*
+
     @ManyToOne
-    public AbstractArea area;*/
+    public Area area;
 
     @Constraints.Required
     public String measure; //No se hasta que punto beneficiaria tener una clase measure.
@@ -34,7 +40,7 @@ public class Observacion extends Model{
 
     //Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
 
-	public Observacion(Provider provider, Indicador indicator, AbstractArea area, String measure, int value){
+	public Observacion(Provider provider, Indicador indicator, Area area, String measure, int value){
         this.provider = provider;
         this.indicator = indicator;
         /*this.area = area;*/
@@ -43,7 +49,7 @@ public class Observacion extends Model{
 
 	}
 
-    public static Finder<Long, Observacion> find = new Finder(Long.class, Observacion.class);
+    public static Finder<Long, Observacion> find = new Finder<Long, Observacion>(Long.class, Observacion.class);
 
     //CRUD
     public static List<Observacion> all(){
