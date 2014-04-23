@@ -31,3 +31,16 @@ main	=	Main page
 old.index	=	Old index
 signup	=	Sign Up
 login	=	Log In
+
+#login form
+identify_yourself	=	Identify yourself
+username	=	Username
+password	=	Password
+signup_now 	=	Sign up!
+
+# more login strings
+user	=	User
+disconnect	=	Disconnect
+
+# bottom bar
+footer_message	=	ObservaTerra is a project by University of Oviedo.

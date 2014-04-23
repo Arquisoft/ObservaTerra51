@@ -38,12 +38,12 @@
                         @if(session != null){
                         @if(session.get("login").equals(null) || session.get("login").equals("")) {
                             <li class="@("active".when(nav == "login"))">
-                                <a class="top" href="@routes.Login.blank()">Log In &mdash; Username</a>
+                                <a class="top" href="@routes.Login.blank()">@Messages.get("login") &mdash; @Messages.get("username")</a>
                             </li>
                         <!-- Logged in -->
                         }else{
                             <li>
-                                <a class="top" href="@routes.Login.logoff">User &mdash; Disconnect</a>
+                                <a class="top" href="@routes.Login.logoff">@Messages.get("user") &mdash; @Messages.get("disconnect")</a>
                             </li>
                         }
                         }else{
@@ -71,7 +71,7 @@
             <footer>
                 <div class = "foot">
                     <p class="small">
-                        ObservaTerra es un proyecto realizado en la Universidad de Oviedo.
+                        @Messages.get("footer_message")
                     </p>
                 </div>
             </footer>

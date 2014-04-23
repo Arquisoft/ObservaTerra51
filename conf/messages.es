@@ -31,3 +31,16 @@ main	=	Principal
 old.index	=	Índice viejo
 signup	=	Registro
 login	=	Inicia Sesión
+
+#login form
+identify_yourself	=	Identifíquese
+username	=	Usuario
+password	=	Contraseña
+signup_now 	=	Regístrese!
+
+# more login strings
+user	=	Usuario
+disconnect	=	Desconectar
+
+# bottom bar
+footer_message	=	ObservaTerra es un proyecto realizado en la Universidad de Oviedo.
