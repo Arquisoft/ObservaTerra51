@@ -7,4 +7,6 @@
 .classpath
 .project
 .settings/*
+.idea/*
+.idea_modules/*
 /target
