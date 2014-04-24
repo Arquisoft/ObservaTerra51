@@ -9,4 +9,5 @@
 .settings/*
 .idea/*
 .idea_modules/*
+/conf/evolutions/*
 /target
