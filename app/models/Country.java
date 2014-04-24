@@ -1,55 +1,47 @@
 package models;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import play.db.ebean.Model;
-import play.libs.Json;
-
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.util.List;
 
+/**
+ * @version 1.0 with JPA
+ */
 @Entity
-public class Country extends Model {
-    
-  @Id
-  public String code;
-  public String name;
-  
-  public Country(String code, String name) {
-	  this.code = code;
-	  this.name = name;
-  }
-   
-  public static Finder<String,Country> find = new Finder(String.class, Country.class);
-  
-  public static List<Country> all() {
-    return find.all();
-  }
+@DiscriminatorValue("pais")
+public class Country extends Area {
 
-  public static void create(Country country) {
-	if (Country.findByName(country.name) == null) { 
-			country.save();
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Country(String name){
+        this.name = name;
 	}
-  }
 
-  public static void remove(String code) {
-	find.ref(code).delete();
-  }
-  
-  public static void deleteAll() {
-    for (Country c: all()) c.delete();
-  }
-  
-  public static Country findByName(String name) {
-	  return find.where().eq("name", name).findUnique();
-  }
+    public static Finder<Long,Country> find = new Finder<Long, Country>(Long.class, Country.class);
 
-  public static Country findByCode(String code) {
-	  return find.byId(code);
-  }
-  
-  public static JsonNode toJson(Country country) {
-	return Json.toJson(country);
-  }
+    //CRUD
+    public static List<Country> all(){
+        return find.all();
+    }
+
+    public static Country findById(Long id){
+        return Country.find.byId(id);
+    }
+
+    public static Country create(Country country) throws Exception {
+        if(Country.findById(country.id) == null){
+            country.save();
+            return country;
+        }else
+            throw new Exception("Element already exists");
+    }
+
+    public static void remove(Long id){
+        find.ref(id).delete();
+    }
 }
-

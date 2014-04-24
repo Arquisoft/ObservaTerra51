@@ -3,36 +3,61 @@
 
 # --- !Ups
 
-create table country (
-  code                      varchar(255) not null,
-  name                      varchar(255),
-  constraint pk_country primary key (code))
-;
-
-create table indicator (
-  code                      varchar(255) not null,
-  name                      varchar(255),
-  constraint pk_indicator primary key (code))
-;
-
-create table observation (
+create table area (
+  tipoArea                  varchar(31) not null,
   id                        bigint not null,
-  obs_value                 double,
-  country_code              varchar(255),
-  indicator_code            varchar(255),
-  constraint pk_observation primary key (id))
+  name                      varchar(255),
+  constraint pk_area primary key (id))
 ;
 
-create sequence country_seq;
+create table indicador (
+  id                        bigint not null,
+  name                      varchar(255),
+  constraint pk_indicador primary key (id))
+;
 
-create sequence indicator_seq;
+create table observacion (
+  id                        bigint not null,
+  provider_id               bigint,
+  indicator_id              bigint,
+  area_id                   bigint,
+  measure                   varchar(255),
+  value                     integer,
+  constraint pk_observacion primary key (id))
+;
 
-create sequence observation_seq;
+create table provider (
+  id                        bigint not null,
+  name                      varchar(255),
+  constraint pk_provider primary key (id))
+;
 
-alter table observation add constraint fk_observation_country_1 foreign key (country_code) references country (code) on delete restrict on update restrict;
-create index ix_observation_country_1 on observation (country_code);
-alter table observation add constraint fk_observation_indicator_2 foreign key (indicator_code) references indicator (code) on delete restrict on update restrict;
-create index ix_observation_indicator_2 on observation (indicator_code);
+create table user (
+  username                  varchar(255) not null,
+  email                     varchar(255),
+  password                  varchar(255),
+  country                   varchar(255),
+  address                   varchar(255),
+  age                       integer,
+  constraint pk_user primary key (username))
+;
+
+create sequence area_seq;
+
+create sequence indicador_seq;
+
+create sequence observacion_seq;
+
+create sequence provider_seq;
+
+create sequence user_seq;
+
+alter table observacion add constraint fk_observacion_provider_1 foreign key (provider_id) references provider (id) on delete restrict on update restrict;
+create index ix_observacion_provider_1 on observacion (provider_id);
+alter table observacion add constraint fk_observacion_indicator_2 foreign key (indicator_id) references indicador (id) on delete restrict on update restrict;
+create index ix_observacion_indicator_2 on observacion (indicator_id);
+alter table observacion add constraint fk_observacion_area_3 foreign key (area_id) references area (id) on delete restrict on update restrict;
+create index ix_observacion_area_3 on observacion (area_id);
 
 
 
@@ -40,17 +65,25 @@ create index ix_observation_indicator_2 on observation (indicator_code);
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists country;
+drop table if exists area;
 
-drop table if exists indicator;
+drop table if exists indicador;
 
-drop table if exists observation;
+drop table if exists observacion;
+
+drop table if exists provider;
+
+drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists country_seq;
+drop sequence if exists area_seq;
 
-drop sequence if exists indicator_seq;
+drop sequence if exists indicador_seq;
 
-drop sequence if exists observation_seq;
+drop sequence if exists observacion_seq;
+
+drop sequence if exists provider_seq;
+
+drop sequence if exists user_seq;
 

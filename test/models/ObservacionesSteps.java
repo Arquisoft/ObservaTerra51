@@ -8,7 +8,7 @@ import java.util.List;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dada;
 import cucumber.api.java.es.Entonces;
-import models.Observation;
+
 import static models.Observation.*;
 
 
