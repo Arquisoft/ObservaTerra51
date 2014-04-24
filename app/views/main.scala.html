@@ -26,9 +26,6 @@
                         <li>
                             <a class="top" href="@routes.Application.home()">@Messages.get("main")</a>
                         </li>
-                        <li class="@("active".when(nav == "home"))">
-                            <a class="top" href="@routes.Application.index()">@Messages.get("old.index")</a>
-                        </li>
                         <li class="@("active".when(nav == "signup"))">
                             <a class="top" href="@routes.SignUp.blank()">@Messages.get("signup")</a>
                         </li>
