@@ -2491,7 +2491,7 @@ a.texto{
     color:#101010;
 }
 
-/*Loin y register buttons*/
+/*Login y register buttons*/
 .topbar input.login {
     -moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
     -webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;

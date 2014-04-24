@@ -26,7 +26,11 @@ public class Observacion extends Model{
     Long id;
 
     @ManyToOne
-	public Provider provider; //Se modificara, en vez de ser Providers, seran usuarios que pertenecen a un Provider
+	public User user;
+
+    @ManyToOne
+    public Organization org;
+
     @ManyToOne
     public Indicador indicator;
 
@@ -38,7 +42,10 @@ public class Observacion extends Model{
     @Constraints.Required
     public int value;
 
-    //Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
+    // Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
+
+    @Constraint.Required
+    public Time time;
 
 	public Observacion(Provider provider, Indicador indicator, Area area, String measure, int value){
         this.provider = provider;
