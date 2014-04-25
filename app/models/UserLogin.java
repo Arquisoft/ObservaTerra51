@@ -17,8 +17,7 @@ public class UserLogin {
 
     public UserLogin(String username, String password) {
         this.username = username;
-        String securePass = hash(password);
-        this.password = securePass;
+        this.password = password;
     }
 
 }

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.PersistenceException;
 
 import java.util.List;
 
@@ -10,10 +11,7 @@ import java.util.List;
 @Entity
 public class Composite extends Area {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
     public List<Area> areas;
 
@@ -22,6 +20,10 @@ public class Composite extends Area {
 	}
 
     public static Finder<Long,Composite> find = new Finder<Long, Composite>(Long.class, Composite.class);
+
+    public String type(){
+        return "composite";
+    }
 
     //CRUD
     public static List<Composite> all(){
@@ -32,12 +34,12 @@ public class Composite extends Area {
         return Composite.find.byId(id);
     }
 
-    public static Composite create(Composite composite) throws Exception {
+    public static Composite create(Composite composite) throws PersistenceException {
         if(Composite.findById(composite.id) == null){
             composite.save();
             return composite;
         }else
-            throw new Exception("Element already exists");
+            throw new PersistenceException("Element already exists");
     }
 
     public static void remove(Long id){

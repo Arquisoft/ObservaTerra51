@@ -23,6 +23,12 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "tipoArea", discriminatorType = DiscriminatorType.STRING)
 public abstract class Area extends Model {
 
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue
+    public Long id;
+
     @Constraints.Required
 	public String name;
 
@@ -37,6 +43,10 @@ public abstract class Area extends Model {
 	public Long getId() {
 		return id;
 	}
+
+    public String type(){
+        return "";
+    }
     
     
 }

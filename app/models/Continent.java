@@ -2,7 +2,9 @@ package models;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PersistenceException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,17 +14,17 @@ import java.util.List;
 @DiscriminatorValue("continente")
 public class Continent extends Area {
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3L;
 
 	public Continent(String name){
         this.name = name;
 	}
 
     public static Finder<Long,Continent> find = new Finder<Long, Continent>(Long.class, Continent.class);
+
+    public String type(){
+        return "continent";
+    }
 
     //CRUD
     public static List<Continent> all(){
@@ -33,12 +35,24 @@ public class Continent extends Area {
         return Continent.find.byId(id);
     }
 
-    public static Continent create(Continent continent) throws Exception {
-        if(Continent.findById(continent.id) == null){
+    public static Continent findByName(String name) throws PersistenceException {
+        List<Continent> list = new ArrayList<Continent>(find.where().ilike("name", name).findList()); //insensitive search
+
+        if(list.isEmpty())
+            return null;
+
+        if(list.size() > 1)
+            throw new PersistenceException("Country Database is inconsistent: Country name is repeated");
+
+        return list.get(0);
+    }
+
+    public static Continent create(Continent continent) throws PersistenceException {
+        if(Continent.findByName(continent.name) == null){
             continent.save();
             return continent;
         }else
-            throw new Exception("Element already exists");
+            throw new PersistenceException("Element already exists");
     }
 
     public static void remove(Long id){
