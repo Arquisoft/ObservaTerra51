@@ -23,7 +23,7 @@ public class Continent extends Area {
     public static Finder<Long,Continent> find = new Finder<Long, Continent>(Long.class, Continent.class);
 
     public String type(){
-        return "continent";
+        return "Continent";
     }
 
     //CRUD

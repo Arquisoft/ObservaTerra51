@@ -24,7 +24,7 @@ public class Province extends Area {
 			Long.class, Province.class);
 
     public String type(){
-        return "province";
+        return "Province";
     }
 
 	// CRUD

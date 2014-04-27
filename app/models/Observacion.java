@@ -2,8 +2,8 @@ package models;
 
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -19,14 +19,14 @@ public class Observacion extends Model{
     Long id;
 
     @ManyToOne
-	public Provider provider; //Se modificara, en vez de ser Providers, seran usuarios que pertenecen a un Provider
+	public Provider provider; //Se modificara, en vez de ser Providers, seran usuarios que pertenecen a un Provider?
     @ManyToOne
     public Indicador indicator;
     @ManyToOne
     public Area area;
 
     @Constraints.Required
-    public String measure; //No se hasta que punto beneficiaria tener una clase measure.
+    public String measure;
     @Constraints.Required
     public int value;
 
@@ -77,15 +77,14 @@ public class Observacion extends Model{
     //Todavia no esta terminado, se va a usar con el Parser
     public static Observacion create(String providerName, String indicatorName, Area area, String measure, int value) throws PersistenceException {
 
-        Observacion observacion = find.setQuery("select id from Observacion as obv where obv.provider.name = ? AND obv.indicator.name = ? AND obv.area.name = ? AND obv.measure = ? AND obv.value = ?")
-                .setParameter(1,providerName)
-                .setParameter(2,indicatorName)
-                .setParameter(3,area.name)
-                .setParameter(4,measure)
-                .setParameter(5,value)
+        String query="find observacion where provider.name=:providerName and indicator.name=:indicatorName and area.name=:areaName and measure=:measure and value=:value";
+        Observacion observacion = find.setQuery(query)
+                .setParameter("providerName",providerName)
+                .setParameter("indicatorName",indicatorName)
+                .setParameter("areaName",area.name)
+                .setParameter("measure",measure)
+                .setParameter("value",value)
                 .findUnique();
-
-        String s ="";//debug
 
         if(observacion == null) {
             observacion = new Observacion(providerName, indicatorName, area, measure, value);
@@ -94,11 +93,6 @@ public class Observacion extends Model{
         }else
             throw new PersistenceException("Element already exists");
     }
-
-    /*
-        select id from Observacion as obv where obv.provider.name = ? AND obv.indicator.name = ? AND obv.area.name = ? AND obv.measure = ? AND obv.value = ?
-     */
-
 
     public static void remove(Long id){
        find.ref(id).delete();

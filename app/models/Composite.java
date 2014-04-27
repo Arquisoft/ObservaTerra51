@@ -22,7 +22,7 @@ public class Composite extends Area {
     public static Finder<Long,Composite> find = new Finder<Long, Composite>(Long.class, Composite.class);
 
     public String type(){
-        return "composite";
+        return "Composite";
     }
 
     //CRUD

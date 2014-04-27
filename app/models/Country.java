@@ -22,7 +22,7 @@ public class Country extends Area {
     public static Finder<Long,Country> find = new Finder<Long, Country>(Long.class, Country.class);
 
     public String type(){
-        return "country";
+        return "Country";
     }
 
     //CRUD
