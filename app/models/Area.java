@@ -32,18 +32,6 @@ public abstract class Area extends Model {
     @Constraints.Required
 	public String name;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
     public String type(){
         return "";
     }

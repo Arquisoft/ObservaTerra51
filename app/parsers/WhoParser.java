@@ -99,8 +99,10 @@ public class WhoParser {
                 Indicador.create(new Indicador(indicatorName.toLowerCase()));
             }catch(PersistenceException p){}//We do nothing, we simply avoid that Indicator creation
         }
+        try{
         //Provider (This parser is only for World Health)
         Provider.create(new Provider(providerName));
+        }catch(PersistenceException p){}//We do nothing, we simply avoid that Provider creation
     }
 
     private void uploadObservations(Element table){

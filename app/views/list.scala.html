@@ -1,0 +1,146 @@
+@(currentPage: com.avaje.ebean.Page[Observacion], currentSortBy: String, currentOrder: String, currentFilter: String)
+
+@****************************************
+* Helper generating navigation links    *
+****************************************@
+@link(newPage:Int, newSortBy:String) = @{
+    
+    var sortBy = currentSortBy
+    var order = currentOrder
+    
+    if(newSortBy != null) {
+        sortBy = newSortBy
+        if(currentSortBy == newSortBy) {
+            if(currentOrder == "asc") {
+                order = "desc"
+            } else {
+                order = "asc"
+            }
+        } else {
+            order = "asc"
+        }
+    }
+    
+    // Generate the link
+    routes.Application.listObservations(newPage, sortBy, order, currentFilter)
+    
+}
+
+@**********************************
+* Helper generating table headers *
+***********************************@
+@header(key:String, title:String) = {
+    <th class="@key.replace(".","_") header @if(currentSortBy == key) @{if(currentOrder == "asc") "headerSortDown" else "headerSortUp"}">
+        <a href="@link(0, key)">@title</a>
+    </th>
+}
+
+@main(nav = "observations") {
+    
+    <h1 id="homeTitle">@Messages("observations.list.title", currentPage.getTotalRowCount)</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+    } 
+
+    <div class="acciones">
+        
+        <form action="@link(0, "name")" method="GET">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by area name...">
+            <input type="submit" id="searchsubmit" value="Filter" class="login">
+        </form>
+        
+    </div>
+    
+    @if(currentPage.getTotalRowCount == 0) {
+        
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+        
+    } else {
+        
+        <table class="observations zebra-striped">
+            <thead>
+                <tr>
+                    @header("indicador.name", "Indicator")
+                    @header("measure", "Measure")
+                    @header("value", "Value")
+                    @header("area.name", "Area")
+                    @header("provider.name", "Provider")
+                </tr>
+            </thead>
+            <tbody>
+
+                @for(observacion <- currentPage.getList) {
+                    <tr>
+                        <td>
+                            @if(observacion.indicador.name == null) {
+                                <em>-</em>
+                            } else {
+                                @observacion.indicador.name
+                            }
+                        </td>
+                        <td>
+                            @if(observacion.measure == null) {
+                                <em>-</em>
+                            } else {
+                                @observacion.measure
+                            }
+                        </td>
+                        <td>
+                            @observacion.value
+                        </td>
+                        <td>
+                        @if(observacion.area.name == null) {
+                            <em>-</em>
+                        } else {
+                            @observacion.area.name
+                        }
+                        </td>
+                        <td>
+                        @if(observacion.provider.name == null) {
+                            <em>-</em>
+                        } else {
+                            @observacion.provider.name
+                        }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        <div id="pagination" class="pagination">
+            <ul>
+                @if(currentPage.hasPrev) {
+                    <li class="prev">
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                    </li>
+                } else {
+                    <li class="prev disabled">
+                        <a>&larr; Previous</a>
+                    </li>
+                }
+                <li class="current">
+                    <a>Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")</a>
+                </li>
+                @if(currentPage.hasNext) {
+                    <li class="next">
+                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                    </li>
+                } else {
+                    <li class="next disabled">
+                        <a>Next &rarr;</a>
+                    </li>
+                }
+            </ul>
+        </div>
+        
+    }
+        
+}
+
+            
