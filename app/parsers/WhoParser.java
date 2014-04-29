@@ -22,7 +22,7 @@ import java.util.Set;
 public class WhoParser {
 
     private String URL;
-    private String providerName="Wolrd Health Organization";
+    private String providerName="World Health Organization";
     private String measure="";
     private String indicatorName ="";
     private String countryName="";
@@ -129,7 +129,7 @@ public class WhoParser {
     }
 
     /**
-     * Utility method used to split the first column of the table. That column contains inicator data and measure data
+     * Utility method used to split the first column of the table. That column contains indicator data and measure data
      * @param indicatorMeasure
      */
     public void indicatorMeasureSplitter(String indicatorMeasure){
