@@ -1,4 +1,4 @@
-@(title: String="", nav: String = "")(content: Html)(implicit session: play.api.mvc.Session=null) <!-- First goes all the other non-implicit "parameters">
+@(title: String="", nav: String = "")(content: Html) <!-- First goes all the other non-implicit "parameters" -->
 
 @import play.i18n._
 
@@ -29,30 +29,32 @@
                         <li class="@("active".when(nav == "signup"))">
                             <a class="top" href="@routes.SignUp.blank()">@Messages.get("signup")</a>
                         </li>
-
                         <!-- Note that you dont need to put the "magic" -->
                         <!-- Not Logged in -->
-                        @if(session != null){
-                        @if(session.get("login").equals(null) || session.get("login").equals("")) {
-                            <li class="@("active".when(nav == "login"))">
-                                <a class="top" href="@routes.Login.blank()">@Messages.get("login") &mdash; @Messages.get("username")</a>
-                            </li>
-                        <!-- Logged in -->
-                        }else{
-                            <li>
-                                <a class="top" href="@routes.Login.logoff">@Messages.get("user") &mdash; @Messages.get("disconnect")</a>
-                            </li>
-                        }
-                        }else{
+                        @if(session.get("login") == null || session.get("login").equals("")) {
                             <li class="@("active".when(nav == "login"))">
                                 <a class="top" href="@routes.Login.blank()">@Messages.get("login")</a>
                             </li>
+                        <!-- Logged in -->
+                        }else{
+                            <li>@session.get("login") &mdash; <a class="top" href="@routes.Login.logoff()">@Messages.get("disconnect")</a></li>
                         }
-
                         <li class="@("active".when(nav == "observations"))">
                             <a href="@routes.Application.listObservations()">Observation Database</a>
                         </li>
 
+                        <li>
+                            <a href="@routes.Application.listObservations()">Dropdown</a>
+                        </li>
+
+                    </ul>
+                    <ul class ="rightLang">
+                        <li class="@("active".when(language == "en"))">
+                            <a href="@routes.Application.switchLanguage("en")">English</a>
+                        </li>
+                        <li class="@("active".when(language == "es"))">
+                            <a href="@routes.Application.switchLanguage("es")">Español</a>
+                        </li>
                     </ul>
             </div>
         </div>

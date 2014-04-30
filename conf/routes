@@ -25,3 +25,6 @@ POST        /login               controllers.Login.submit()
 POST        /logoff              controllers.Login.logoff()
 GET         /logoff              controllers.Login.logoff()
 
+#Switch Language (i18n)
+GET         /home/:slanguage                controllers.Application.switchLanguage(slanguage: String)
+

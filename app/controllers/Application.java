@@ -4,6 +4,7 @@ import models.Observacion;
 import parsers.WhoParser;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.error403;
 import views.html.index2;
 import views.html.list;
 
@@ -11,7 +12,14 @@ public class Application extends Controller {
     private static String  URL = "http://apps.who.int/gho/athena/data/GHO/WHOSIS_000002,WHOSIS_000001,WHOSIS_000015.html?profile=ztable&filter=COUNTRY:*;REGION:AFR;REGION:AMR;REGION:SEAR;REGION:EUR;REGION:EMR;REGION:WPR;SEX:*";
 
     public static Result home(){
-        return ok(index2.render());
+        session().put("language","joder");
+
+        if(!(session().get("login") == ""))
+            return ok(index2.render());
+        else{
+            session().put("login","");
+            return ok(index2.render());
+        }
     }
 
     public static Result parserTest(){
@@ -31,11 +39,21 @@ public class Application extends Controller {
      * @param filter Filter applied on area names
      */
     public static Result listObservations(int page, String sortBy, String order, String filter) {
+
         return ok(
                 list.render(
                         Observacion.page(page, 10, sortBy, order, filter),sortBy, order, filter
                 )
         );
+    }
+
+    public static Result switchLanguage(String lang){
+        if(!lang.equals("es") && !lang.equals("en"))
+            return ok(error403.render("403 Forbidden"));
+
+        //The language introduced is one of the available ones
+        changeLang(lang);
+        return ok(index2.render());
     }
 
 }

@@ -43,4 +43,7 @@ user	=	User
 disconnect	=	Disconnect
 
 # bottom bar
-footer_message	=	ObservaTerra is a project by University of Oviedo.
+footer_message	=	ObservaTerra is a project developed by the University of Oviedo.
+
+#Observations list
+observations.list.title={0,choice,0#No observations|1#One observation|1<{0,number,integer} observations} found

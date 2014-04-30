@@ -6,6 +6,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index2;
+import views.html.error403;
 
 import static play.data.Form.form;
 
@@ -17,7 +18,10 @@ public class Login extends Controller {
     final static Form<UserLogin> loginForm = form(UserLogin.class, UserLogin.All.class);
 
     public static Result blank() {
-        return ok(views.html.login.loginform.render(loginForm));
+        if(!(session().get("login") == ("")))
+            return ok(views.html.login.loginform.render(loginForm));
+        else
+            return ok(error403.render("403 Forbidden"));
     }
 
     public static Result submit() {
@@ -35,7 +39,8 @@ public class Login extends Controller {
                 if(user.password.equals(filledForm.get().password))
                 {
                     //We put the user in session
-                    session("login", filledForm.get().username);
+                    session().put("login", filledForm.get().username);
+                    //Return home
                     return ok(index2.render());
                 }else
                     filledForm.reject("username", "User and password doesn't match");
@@ -47,7 +52,8 @@ public class Login extends Controller {
     }
 
     public static Result logoff(){
-        session("login", null);
+        //Login empty
+        session().put("login","");
         //Way back HOME
         return ok(index2.render());
     }
