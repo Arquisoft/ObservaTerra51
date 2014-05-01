@@ -7,6 +7,7 @@ Value				= Valor
 Bar.chart			= Gráfico de barras
 Admin				= Administrar
 countries 			= Países
+country				= País
 list.countries		= Lista de países
 add.country 		= Añadir país
 delete.country 		= Borrar país
@@ -29,8 +30,11 @@ upload				= Cargar
 #navigation
 main	=	Principal
 old.index	=	Índice viejo
-signup	=	Registro
-login	=	Inicia Sesión
+signup	=	Registrarse
+login	=	Iniciar Sesión
+cancel	= Cancelar
+observations_database	=	Base de Datos
+observations_dropdown	=	Desplegable de observaciones
 
 #login form
 identify_yourself	=	Identifíquese
@@ -44,3 +48,30 @@ disconnect	=	Desconectar
 
 # bottom bar
 footer_message	=	ObservaTerra es un proyecto realizado en la Universidad de Oviedo.
+
+#Observations list
+observations.nothing_to_display	=	Nada que mostrar
+observations.list.title={0,choice,0#Ninguna observación|1#Una observación|1<{0,number,integer} observaciones} encontrada {0,choice,0#|1#|1<{0,number,integer}s}
+observations.filter		=	Filtrar
+observations.filter_placeholder	=	Filtrar por nombre de área
+observations.previous	=	Anterior
+observations.next		=	Siguiente
+observations.indicator	=	Indicador
+observations.measure	=	Medida
+observations.value		=	Valor
+observations.area		=	Área
+observations.provider	=	Provider
+
+#registration form
+username.help	=	Por favor, escoge un usuario válido.
+email		=	Correo electrónico
+email.help	=	Introduce una dirección de correo válida.
+password.help	=	Una contraseña debe tener al menos 6 caracteres.
+repeat_password	=	Repite la contraseña.
+repeat_password.help	=	Por favor, repita su contraseña de nuevo
+
+country.choose	=	--- Seleccione un país ---
+country.error	=	Por favor, escoja su país
+address		=	Dirección
+age			=	Edad
+agree_terms	=	Usted acepta los Términos y Condiciones.

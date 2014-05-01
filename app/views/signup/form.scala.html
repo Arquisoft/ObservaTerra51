@@ -16,26 +16,26 @@
             
             @inputText(
                 signupForm("username"), 
-                '_label -> "Username", 
-                '_help -> "Please choose a valid username.",
+                '_label -> message("username"), 
+                '_help -> message("username.help"),
                 '_error -> signupForm.globalError
             )
             
             @inputText(
                 signupForm("email"), '_label -> "Email",
-                '_help -> "Enter a valid email address."
+                '_help -> message("email.help")
             )
             
             @inputPassword(
                 signupForm("password"), 
-                '_label -> "Password",
-                '_help -> "A password must be at least 6 characters. "
+                '_label -> message("password"),
+                '_help -> message("password.help")
             )
             
             @inputPassword(
                 signupForm("repeatPassword"), 
-                '_label -> "Repeat password",
-                '_help -> "Please repeat your password again.",
+                '_label -> message("repeat_password"),
+                '_help -> message("repeat_password.help"),
                 '_error -> signupForm.error("password")
             )
             
@@ -48,19 +48,19 @@
             @select(
                 signupForm("country"),
                 options = options(Countries.list),
-                '_default -> "--- Choose a country ---",
-                '_label -> "Country",
-                '_error -> signupForm("country").error.map(_.withMessage("Please select your country"))
+                '_default -> message("country.choose"),
+                '_label -> message("country"),
+                '_error -> signupForm("country").error.map(_.withMessage("@message('country.error')"))
             )
             
             @textarea(
                 signupForm("address"),
-                '_label -> "Address", 'cols -> 50
+                '_label -> message("address"), 'cols -> 50
             )
             
             @inputText(
                 signupForm("age"),
-                '_label -> "Age", 'class -> "mini",
+                '_label -> message("age"), 'class -> "mini",
                 '_showConstraints -> false
             )
               
@@ -70,15 +70,15 @@
             
             @checkbox(
                 signupForm("accept"), 
-                '_label -> None, '_text -> "You agree the Terms and conditions",
+                '_label -> None, '_text -> message("agree_terms"),
                 '_showConstraints -> false
             )
             
         </fieldset>
         
         <div class="actions">
-            <input type="submit" class="login" value="Sign Up">
-            <a href="@routes.Application.home" class="cancel">Cancel</a>
+            <input type="submit" class="login" value="@(message("signup"))">
+            <a href="@routes.Application.home" class="cancel">@message("cancel")</a>
         </div>
         
     }

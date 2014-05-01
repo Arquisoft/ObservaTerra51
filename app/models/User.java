@@ -2,11 +2,19 @@ package models;
 
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
+import play.libs.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 import java.util.List;
 
+/**
+ * 
+ * @category Models
+ *
+ */
 @Entity
 public class User extends Model{
    
@@ -46,7 +54,7 @@ public class User extends Model{
         this.age = age;
     }
 
-    public static Model.Finder<String,User> find = new Model.Finder(String.class, User.class);
+    public static Model.Finder<String,User> find = new Finder<String, User>(String.class, User.class);
 
     public static List<User> all(){
         return find.all();

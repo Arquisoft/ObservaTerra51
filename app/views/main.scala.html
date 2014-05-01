@@ -40,19 +40,19 @@
                             <li>@session.get("login") &mdash; <a class="top" href="@routes.Login.logoff()">@Messages.get("disconnect")</a></li>
                         }
                         <li class="@("active".when(nav == "observations"))">
-                            <a href="@routes.Application.listObservations()">Observation Database</a>
+                            <a href="@routes.Application.listObservations()">@message("observations_database")</a>
                         </li>
 
                         <li>
-                            <a href="@routes.Application.listObservations()">Dropdown</a>
+                            <a href="@routes.Application.listObservations()">@message("observations_dropdown")</a>
                         </li>
 
                     </ul>
                     <ul class ="rightLang">
-                        <li class="@("active".when(language == "en"))">
+                        <li class="@("active".when(language.equals("en")))">
                             <a href="@routes.Application.switchLanguage("en")">English</a>
                         </li>
-                        <li class="@("active".when(language == "es"))">
+                        <li class="@("active".when(language.equals("es")))">
                             <a href="@routes.Application.switchLanguage("es")">Español</a>
                         </li>
                     </ul>

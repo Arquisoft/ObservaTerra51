@@ -16,20 +16,20 @@
             
             @inputText(
                 loginForm("username"),
-                '_label -> "Username",
+                '_label -> message("username"),
                 '_error -> loginForm.globalError
             )
             
             @inputPassword(
                 loginForm("password"),
-                '_label -> "Password"
+                '_label -> message("password")
             )
 
         </fieldset>
         
         <div class="actions">
-            <input type="submit" class="login" value="Log in">
-            <a href="@routes.SignUp.blank()" class="whiteBackground">Regístrese</a>
+            <input type="submit" class="login" value="message('login')">
+            <a href="@routes.SignUp.blank()" class="whiteBackground">message("signup_now")</a>
         </div>
         
     }

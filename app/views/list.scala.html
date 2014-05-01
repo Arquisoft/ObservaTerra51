@@ -48,8 +48,8 @@
     <div class="acciones">
         
         <form action="@link(0, "name")" method="GET">
-            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="Filter by area name...">
-            <input type="submit" id="searchsubmit" value="Filter" class="login">
+            <input type="search" id="searchbox" name="f" value="@currentFilter" placeholder="@Messages("observations.filter_placeholder")">
+            <input type="submit" id="searchsubmit" value="@(message("observations.filter"))" class="login">
         </form>
         
     </div>
@@ -57,7 +57,7 @@
     @if(currentPage.getTotalRowCount == 0) {
         
         <div class="well">
-            <em>Nothing to display</em>
+            <em>@message("observations.nothing_to_display")</em>
         </div>
         
     } else {
@@ -65,11 +65,11 @@
         <table class="observations zebra-striped">
             <thead>
                 <tr>
-                    @header("indicador.name", "Indicator")
-                    @header("measure", "Measure")
-                    @header("value", "Value")
-                    @header("area.name", "Area")
-                    @header("provider.name", "Provider")
+                    @header("indicador.name", "@message('observations.indicator')")
+                    @header("measure", "@message('observations.measure')")
+                    @header("value", "@message('observations.value')")
+                    @header("area.name", "@message('observations.area')")
+                    @header("provider.name", "@message('observations.provider')")
                 </tr>
             </thead>
             <tbody>
@@ -117,11 +117,11 @@
             <ul>
                 @if(currentPage.hasPrev) {
                     <li class="prev">
-                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; Previous</a>
+                        <a href="@link(currentPage.getPageIndex - 1, null)">&larr; @(message("previous"))</a>
                     </li>
                 } else {
                     <li class="prev disabled">
-                        <a>&larr; Previous</a>
+                        <a>&larr; @(message("previous"))</a>
                     </li>
                 }
                 <li class="current">
@@ -129,11 +129,11 @@
                 </li>
                 @if(currentPage.hasNext) {
                     <li class="next">
-                        <a href="@link(currentPage.getPageIndex + 1, null)">Next &rarr;</a>
+                        <a href="@link(currentPage.getPageIndex + 1, null)">@(message("next")) &rarr;</a>
                     </li>
                 } else {
                     <li class="next disabled">
-                        <a>Next &rarr;</a>
+                        <a>@(message("next")) &rarr;</a>
                     </li>
                 }
             </ul>

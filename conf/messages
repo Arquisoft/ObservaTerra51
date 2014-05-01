@@ -1,8 +1,11 @@
-name = name
-create = Create
-Welcome			= Welcome to ObservaTerra
+## Please keep the following convention:
+##	all entries must start with lowercase
+
+name 				= name
+create 				= Create
+welcome				= Welcome to ObservaTerra
 countries 			= Countries
-Country				= Country
+country				= Country
 Indicator			= Indicator
 Value				= Value
 Bar.chart			= Bar chart
@@ -27,23 +30,50 @@ upload.excel.file	= Upload Excel File
 upload				= Upload
 
 #navigation
-main	=	Main page
+main		=	Main page
 old.index	=	Old index
-signup	=	Sign Up
-login	=	Log In
+signup		=	Sign Up
+login		=	Log In
+cancel		=	Cancel
+observations_database	=	Observations database
+observations_dropdown	=	Observations dropdown
 
 #login form
 identify_yourself	=	Identify yourself
-username	=	Username
-password	=	Password
-signup_now 	=	Sign up!
+username			=	Username
+password			=	Password
+signup_now 			=	Sign up!
 
 # more login strings
-user	=	User
+user		=	User
 disconnect	=	Disconnect
 
 # bottom bar
 footer_message	=	ObservaTerra is a project developed by the University of Oviedo.
 
 #Observations list
-observations.list.title={0,choice,0#No observations|1#One observation|1<{0,number,integer} observations} found
+observations.nothing_to_display	=	Nothing to display
+observations.list.title	=	{0,choice,0#No observations|1#One observation|1<{0,number,integer} observations} found
+observations.filter		=	Filter
+observations.filter_placeholder		=	Filter by area name
+observations.previous	=	Previous
+observations.next		=	Next
+observations.indicator	=	Indicator
+observations.measure	=	Measure
+observations.value		=	Value
+observations.area		=	Area
+observations.provider	=	Provider
+
+#registration form
+username.help			=	Please choose a valid username.
+email					=	Email
+email.help				=	Enter a valid email address.
+password.help			=	A password must be at least 6 characters.
+repeat_password			=	Repeat password
+repeat_password.help	=	Please repeat your password again.
+
+country.choose	=	--- Choose a country ---
+country.error	=	Please select your country
+address			=	Address
+age				=	Age
+agree_terms		=	You agree with the Terms and Conditions

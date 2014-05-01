@@ -4,6 +4,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PersistenceException;
 
+import models.Area;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class Continent extends Area {
 
     //CRUD
     public static List<Continent> all(){
-        return find.all();
+    	return find.all();
     }
 
     public static Continent findById(Long id){
