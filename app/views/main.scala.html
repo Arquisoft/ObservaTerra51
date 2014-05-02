@@ -40,11 +40,11 @@
                             <li>@session.get("login") &mdash; <a class="top" href="@routes.Login.logoff()">@Messages.get("disconnect")</a></li>
                         }
                         <li class="@("active".when(nav == "observations"))">
-                            <a href="@routes.Application.listObservations()">@message("observations_database")</a>
+                            <a href="@routes.Application.listObservations()">@Messages.get("observations_database")</a>
                         </li>
 
                         <li>
-                            <a href="@routes.Application.listObservations()">@message("observations_dropdown")</a>
+                            <a href="@routes.Application.listObservations()">@Messages.get("observations_dropdown")</a>
                         </li>
 
                     </ul>

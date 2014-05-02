@@ -1,6 +1,6 @@
 name = nombre
 create = Crear
-Welcome			= Bienvenido al portal ObservaTerra
+welcome			= Bienvenido al portal ObservaTerra
 Country				= País
 Indicator			= Indicador
 Value				= Valor
