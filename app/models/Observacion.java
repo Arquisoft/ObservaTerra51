@@ -64,6 +64,13 @@ public class Observacion extends Model{
         return find.all();
     }
 
+    public static List<Observacion>allByArea(String areaName){
+        return Ebean.find(Observacion.class)
+                .where()
+                .ilike("area.name",areaName)
+                .findList();
+    }
+
     public static Observacion findById(Long id){
         return Observacion.find.byId(id);
     }

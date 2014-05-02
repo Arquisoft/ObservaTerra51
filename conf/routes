@@ -2,29 +2,34 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /                    controllers.Application.home()
-GET         /parser              controllers.Application.parserTest()
+GET         /                         controllers.Application.home()
+GET         /parser                   controllers.Application.parserTest()
 # Observations list (look at the default values for pagination parameters)
-GET         /observations        controllers.Application.listObservations(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+GET         /observations             controllers.Application.listObservations(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /assets/*file             controllers.Assets.at(path="/public", file)
 
 # Ejemplos 
-GET         /proxy               controllers.Pruebas.proxy(url: String)
-GET         /ajax                controllers.Pruebas.ajax()
-GET         /parallel            controllers.Pruebas.parallel()
+GET         /proxy                    controllers.Pruebas.proxy(url: String)
+GET         /ajax                     controllers.Pruebas.ajax()
+GET         /parallel                 controllers.Pruebas.parallel()
 
 # Registro
-GET         /signup              controllers.SignUp.blank()
-POST        /signup              controllers.SignUp.submit()
+GET         /signup                   controllers.SignUp.blank()
+POST        /signup                   controllers.SignUp.submit()
 
 #Log In (falta sesion)
-GET         /login               controllers.Login.blank()
-POST        /login               controllers.Login.submit()
-POST        /logoff              controllers.Login.logoff()
-GET         /logoff              controllers.Login.logoff()
+GET         /login                    controllers.Login.blank()
+POST        /login                    controllers.Login.submit()
+POST        /logoff                   controllers.Login.logoff()
 
 #Switch Language (i18n)
-GET         /home/:slanguage                controllers.Application.switchLanguage(slanguage: String)
+GET         /home/:slanguage          controllers.Application.switchLanguage(slanguage: String)
 
+#API
+#Json puro
+GET         /json/countries           controllers.API.countries()
+GET         /json/country/:name        controllers.API.country(name:String)
+GET         /json/observations        controllers.API.observations()
+GET         /json/observations/:area   controllers.API.observationsByArea(area:String)
