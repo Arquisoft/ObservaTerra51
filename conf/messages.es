@@ -77,7 +77,7 @@ age			=	Edad
 agree_terms	=	Usted acepta los Términos y Condiciones.
 
 #Extra
-stadistics      =   Estadisticas
+statistics      =   Estadisticas
 or              =   o
 login.legend    =   Información de identificación
 signup.legend   =   Información de su cuenta

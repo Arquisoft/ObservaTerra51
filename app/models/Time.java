@@ -1,5 +1,8 @@
 package models;
-
+import play.db.ebean.Model;
+import java.util.Date;
+import play.data.validation.Constraints;
+import javax.persistence.*;
 /**
  * @version 1.0 with JPA
  */
@@ -21,7 +24,7 @@ public class Time extends Model {
         return "";
     }
     
-    public Time(Date inicio, Date final) {
+    public Time(Date inicio, Date fin) {
     	this.inicio = inicio;
     	this.fin = fin;
     }

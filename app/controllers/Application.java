@@ -57,7 +57,11 @@ public class Application extends Controller {
     }
 
     public static Result statistics(){
-        return ok(views.html.statisticsMain.render());
+    	/*
+    	 * Este retorno me da error de compilacion [DANIEL]
+    	 */
+//        return ok(views.html.statisticsMain.render());
+    	return TODO; // Esto dice: NotImplementedYet
     }
 
 }
