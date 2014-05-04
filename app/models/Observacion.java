@@ -34,7 +34,13 @@ public class Observacion extends Model{
 
 
 
-    //Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
+    // Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
+    // Time con campo de inicio + fin.
+    
+    @Constraints.Required
+    public Time time;
+    
+    
 
 	public Observacion(Provider provider, Indicador indicator, Area area, String measure, int value){
         this.provider = provider;
