@@ -56,4 +56,8 @@ public class Application extends Controller {
         return ok(index2.render());
     }
 
+    public static Result statistics(){
+        return ok(views.html.statisticsMain.render());
+    }
+
 }

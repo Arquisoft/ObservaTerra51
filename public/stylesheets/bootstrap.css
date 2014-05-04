@@ -190,7 +190,7 @@ body {
   color: #404040;
 }
 .container {
-  width: 940px;
+  /*width: 940px;*/
   margin-left: auto;
   margin-right: auto;
   zoom: 1;
@@ -2617,4 +2617,7 @@ li.topright{
     float:right;
 }
 
-
+.resize{
+    width: 50%;
+    height: 50%;
+}

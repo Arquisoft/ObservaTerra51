@@ -77,3 +77,21 @@ country.error	=	Please select your country
 address			=	Address
 age				=	Age
 agree_terms		=	You agree with the Terms and Conditions
+
+#Extra
+stadistics      =   Stadistics
+or              =   or
+login.legend    =   LogIn Information
+signup.legend   =   Account information
+signup.contactInformation   =   Contact information
+login.username.help			=	Required
+login.password.help         =   Required
+
+signup.summary.title        =   Your account:
+signup.summary.additionalInfo   =   Additional information:
+signup.summary.username =   Username
+signup.summary.password =   Password
+signup.summary.email    =   Email
+signup.summary.country  =   Country
+signup.summary.address  =   Address
+signup.summary.age  =   Age

@@ -43,8 +43,8 @@
                             <a href="@routes.Application.listObservations()">@Messages.get("observations_database")</a>
                         </li>
 
-                        <li>
-                            <a href="@routes.Application.listObservations()">@Messages.get("observations_dropdown")</a>
+                        <li class="@("active".when(nav == "statistics"))">
+                            <a href="@routes.Application.statistics()">@Messages.get("stadistics")</a>
                         </li>
 
                     </ul>

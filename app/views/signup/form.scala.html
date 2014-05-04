@@ -12,7 +12,7 @@
     @helper.form(action = routes.SignUp.submit) {
         
         <fieldset>
-            <legend>Account information</legend>
+            <legend>@Messages("signup.legend")</legend>
             
             @inputText(
                 signupForm("username"), 
@@ -43,7 +43,7 @@
         
         <fieldset>
             
-            <legend>Contact information</legend>
+            <legend>@Messages("signup.contactInformation")</legend>
             
             @select(
                 signupForm("country"),

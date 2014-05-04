@@ -51,7 +51,7 @@ footer_message	=	ObservaTerra es un proyecto realizado en la Universidad de Ovie
 
 #Observations list
 observations.nothing_to_display	=	Nada que mostrar
-observations.list.title={0,choice,0#Ninguna observación|1#Una observación|1<{0,number,integer} observaciones} encontrada {0,choice,0#|1#|1<{0,number,integer}s}
+observations.list.title={0,choice,0#Ninguna observación|1#Una observación|1<{0,number,integer} observaciones} encontrada
 observations.filter		=	Filtrar
 observations.filter_placeholder	=	Filtrar por nombre de área
 observations.previous	=	Anterior
@@ -75,3 +75,22 @@ country.error	=	Por favor, escoja su país
 address		=	Dirección
 age			=	Edad
 agree_terms	=	Usted acepta los Términos y Condiciones.
+
+#Extra
+stadistics      =   Estadisticas
+or              =   o
+login.legend    =   Información de identificación
+signup.legend   =   Información de su cuenta
+signup.contactInformation   =   Información de contacto
+login.username.help			=	Obligatorio
+login.password.help         =   Obligatorio
+
+signup.summary.title        =   Tu cuenta:
+signup.summary.additionalInfo   =   Informacion adicional:
+signup.summary.username =   Usuario
+signup.summary.password =   Contraseña
+signup.summary.email    =   Email
+signup.summary.country  =   País
+signup.summary.address  =   Dirección
+signup.summary.age  =   Edad
+

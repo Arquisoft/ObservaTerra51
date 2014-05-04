@@ -1,36 +1,37 @@
 @(user: User)
 
 @main(nav = "signup") {
+    <center>
+
+    <h2>@Messages("signup.summary.title")</h2>
     
-    <h2>Your account:</h2>
-    
-    <h6>Username</h6>
+    <h6>@Messages("signup.summary.username")</h6>
     
     <p>
         @user.username
     </p>
     
-    <h6>Email</h6>
+    <h6>@Messages("signup.summary.email")</h6>
     
     <p>
         @user.email
     </p>
     
-    <h6>Password</h6>
+    <h6>@Messages("signup.summary.password")</h6>
     
     <p>
         @user.password
     </p>
     
-    <h2>Additional informations:</h2>
+    <h2>@Messages("signup.summary.additionalInfo")</h2>
     
-    <h6>Country</h6>
+    <h6>@Messages("signup.summary.country")</h6>
     
     <p>
         @user.country
     </p>
     
-    <h6>Address</h6>
+    <h6>@Messages("signup.summary.address")</h6>
     
     <p>
         @if(user.address == null || user.address == "") {
@@ -40,7 +41,7 @@
         }
     </p>
     
-    <h6>Age</h6>
+    <h6>@Messages("signup.summary.age")</h6>
     
     <p>
         @if(user.age == null) {
@@ -49,5 +50,6 @@
             @user.age
         }
     </p>
+    </center>
     
 }

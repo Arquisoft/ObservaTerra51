@@ -12,24 +12,26 @@
     @helper.form(action = routes.Login.submit) {
         
         <fieldset>
-            <legend>LogIn Information</legend>
+            <legend>@Messages("login.legend")</legend>
             
             @inputText(
                 loginForm("username"),
                 '_label -> Messages("username"),
+                '_help -> Messages("login.username.help"),
                 '_error -> loginForm.globalError
             )
             
             @inputPassword(
                 loginForm("password"),
+                '_help -> Messages("login.password.help"),
                 '_label -> Messages("password")
             )
 
         </fieldset>
         
         <div class="actions">
-            <input type="submit" class="login" value="message('login')">
-            <a href="@routes.SignUp.blank()" class="whiteBackground">message("signup_now")</a>
+            <input type="submit" class="login" value=@Messages("login")> @Messages("or")
+            <a href="@routes.SignUp.blank()" class="whiteBackground">@Messages("signup_now")</a>
         </div>
         
     }
