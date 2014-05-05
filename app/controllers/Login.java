@@ -18,10 +18,13 @@ public class Login extends Controller {
     final static Form<UserLogin> loginForm = form(UserLogin.class, UserLogin.All.class);
 
     public static Result blank() {
-        if(!(session().get("login").compareToIgnoreCase("") == 0))
-            return ok(views.html.login.loginform.render(loginForm));
+    	if (session() == null)
+    		return ok(error403.render("403 Forbidden"));
+    	
+        if(session().get("login") == null || session().get("login").compareToIgnoreCase("") == 0)
+        	return ok(views.html.login.loginform.render(loginForm));
         else
-            return ok(error403.render("403 Forbidden"));
+        	return ok(error403.render("403 Forbidden"));
     }
 
     public static Result submit() {

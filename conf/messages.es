@@ -1,6 +1,8 @@
 name = nombre
 create = Crear
-welcome			= Bienvenido al portal ObservaTerra
+welcome				= Bienvenido al portal ObservaTerra
+profWelcome			= Bienvenido, 
+docTableProf		= Documentos
 Country				= País
 Indicator			= Indicador
 Value				= Valor

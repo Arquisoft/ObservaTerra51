@@ -63,7 +63,11 @@ public class Application extends Controller {
     }
     
     public static Result showProfile() {
-    	return ok(profile.render());
+    	
+    	if (session().get("login") == null || session().get("login").compareToIgnoreCase("") == 0)
+    		return ok(error403.render("403 Forbidden"));
+    	else
+    		return ok(profile.render(session().get("login")));
     }
 
 }

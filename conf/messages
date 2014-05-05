@@ -4,6 +4,8 @@
 name 				= name
 create 				= Create
 welcome				= Welcome to ObservaTerra
+profWelcome			= Welcome, 
+docTableProf		= Documents
 countries 			= Countries
 country				= Country
 Indicator			= Indicator

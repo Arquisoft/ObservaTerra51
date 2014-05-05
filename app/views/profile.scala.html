@@ -1,20 +1,45 @@
+@(user:String)
 
-@import helper._ 
+@import helper._
+
 @import play.i18n._
 
 @main(title="Profile",nav="profile") {
 
 <div class="intro">
-        <h1>@Messages.get("welcome")</h1>
+	<h1>@Messages.get("profWelcome") @user -- @Messages.get("docTableProf") </h1>
+
+	<div id="formularioUpload">
+		@form(action = routes.Application.showProfile, 'enctype ->"multipart/form-data") { 
 		
-		@form(action = routes.Application.showProfile, 'enctype -> "multipart/form-data") {
+			<input type="file" name="file" />
 	
-		<input type="file" name="file" />
+			<p>
+				<input type="submit" value="Subir archivo" />
+			</p>
+		}
+	</div>
 	
-		<p>
-			<input type="submit" value="Subir archivo" />
-		</p>
-	}
-        
-    </div>
+	<div style="padding-top:10px">	
+		<table>
+			<tbody>
+				<tr>
+                    <td>
+                        <a href="#">Guía de Aprendizaje.pdf</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    	<a href="#">Apuntes tema 1.docx</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#">Examen 2012-2013.jpg</a>
+                    </td>
+                </tr>
+            </tbody>
+		</table>
+	</div>
+</div>
 }
