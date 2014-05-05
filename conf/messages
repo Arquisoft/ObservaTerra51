@@ -95,3 +95,23 @@ signup.summary.email    =   Email
 signup.summary.country  =   Country
 signup.summary.address  =   Address
 signup.summary.age  =   Age
+
+# main page
+## paragraphs
+main_page.p1_1	=	This portal has as goal being a nexus, a place to find honest and up-to-date information on different aspects of the Earth. Inside, many kind of resources are available and if you
+main_page.p1_2	=	sign up
+main_page.p1_3	=	you can access an even greater selection of content.
+
+main_page.p2	=   This site is mantained by an association of NGOs whose goal is getting the data gathered here to reach the most people possible and keep, through this website, global access to reliable information.
+
+main_page.p3_1	=	If you are member of any of the colaborating organizations or a volunteer, please fill in the
+main_page.p3_2	=	registering form
+main_page.p3_3	=	with you personal data and your acount will be activated as soon as possible by an Admin.
+
+main_page.p4_1	=	We wish you find here the desired information and you can contribute to this (non-profit) site by making a donation 
+main_page.p4_2	=	here.
+
+## image footer
+worldhealthorganization	=	World Health Organization
+unitednations			=	United Nations
+foodandagricultureorganization	=	Food and Agriculture Organization

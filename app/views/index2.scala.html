@@ -6,18 +6,30 @@
     <div class="intro">
         <h1>@Messages.get("welcome")</h1>
 
-        <p>Este portal tiene como objetivo ser un punto de unión, un lugar donde encontrar información veraz y actualizada sobre diferentes aspectos de la Tierra.
-             En su interior se ofrecen diferentes recursos, y si se <a class = "whiteBackground" href="@routes.SignUp.blank()">registra</a> podra acceder a mayor cantidad de contenido.</p>
+        <p>
+        @Messages.get("main_page.p1_1")
+        <a class = "whiteBackground" href="@routes.SignUp.blank()">
+        @Messages.get("main_page.p1_2")
+        </a>
+        @Messages.get("main_page.p1_3")
+        </p>
         <br>
-        <p>Este portal se encuentra mantenido por un grupo de ONGs cuyo objetivo es que los datos que aqui se recojen lleguen al mayor
-            numero de gente posible y permitir, mediante este sitio, el acceso global a informacion fiable.</p>
+        <p>
+        @Messages.get("main_page.p2")
+        </p>
         <br>
-
-        <p>Si usted es un miembro de alguna de las organizaciones del proyecto o un voluntario, por favor rellene el formulario de registro con sus datos
-        y su cuenta será activada en el menor tiempo posible por el Administrador del sitio.</p>
+        <p>
+        @Messages.get("main_page.p3_1")
+		<a class = "whiteBackground" href="@routes.SignUp.blank()">@Messages.get("main_page.p3_2")</a>
+        @Messages.get("main_page.p3_3")
+        </p>
         <br>
-        <p>Esperamos que encuentre la informacion que busca y si quiere ayudar a mantener el sitio (sin ánimo de lucro) puede realizar una donación aquí.</p>
+        <p>
+        @Messages.get("main_page.p4_1")
+        <a href="http://about:blank">@Messages.get("main_page.p4_2")</a>
+        </p>
         <br>
+        
         <table class="span14">
             <tbody>
                 <tr>
@@ -26,9 +38,9 @@
                     <td><center><img style="height:auto; width:auto; max-width:180px; max-height:150px " src="@routes.Assets.at("images/FAO_Logo.gif")" alt="Food and Agriculture Organization of the United Nations"></center></td>
                 </tr>
                 <tr>
-                    <td><center>World Health Organization</center></td>
-                    <td><center>United Nations</center></td>
-                    <td><center>Food and Agriculture Organization</center></td>
+                    <td><center>@Messages.get("worldhealthorganization")</center></td>
+                    <td><center>@Messages.get("unitednations")</center></td>
+                    <td><center>@Messages.get("foodandagricultureorganization")</center></td>
                 </tr>
             </tbody>
         </table>

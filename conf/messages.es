@@ -94,3 +94,21 @@ signup.summary.country  =   País
 signup.summary.address  =   Dirección
 signup.summary.age  =   Edad
 
+#main page texts
+## paragraphs
+main_page.p1_1	=	Este portal tiene como objetivo ser un punto de unión, un lugar donde encontrar información veraz y actualizada sobre diferentes aspectos de la Tierra. En su interior se ofrecen diferentes recursos, y si se 
+main_page.p1_2	=	registra
+main_page.p1_3 	=	podrá acceder a mayor cantidad de contenido.
+        
+main_page.p2	=	Este portal se encuentra mantenido por un grupo de ONGs cuyo objetivo es que los datos que aqui se recojen lleguen al mayor numero de gente posible y permitir, mediante este sitio, el acceso global a informacion fiable.
+main_page.p3_1 	=   Si usted es un miembro de alguna de las organizaciones del proyecto o un voluntario, por favor rellene el 
+main_page.p3_2 	=	formulario de registro
+main_page.p3_3	=	con sus datos y su cuenta será activada en el menor tiempo posible por el Administrador del sitio.
+     
+main_page.p4_1	=	Esperamos que encuentre la informacion que busca y si quiere ayudar a mantener el sitio (sin ánimo de lucro) puede realizar una donación 
+main_page.p4_2	=	aquí.
+
+## image footer
+worldhealthorganization	=	Organización Mundial de la Salud
+unitednations			=	Organización de las Naciones Unidas
+foodandagricultureorganization	=	Organización de las Naciones Unidas para la Alimentación y la Agricultura
