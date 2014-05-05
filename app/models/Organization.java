@@ -1,3 +1,5 @@
+package models;
+
 public class Organization {
 
     public String name;

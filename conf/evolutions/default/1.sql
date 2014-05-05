@@ -19,10 +19,12 @@ create table indicador (
 create table observacion (
   id                        bigint not null,
   provider_id               bigint,
-  indicator_id              bigint,
+  indicador_id              bigint,
   area_id                   bigint,
   measure                   varchar(255),
   value                     integer,
+  inicio                    timestamp,
+  fin                       timestamp,
   constraint pk_observacion primary key (id))
 ;
 
@@ -30,6 +32,13 @@ create table provider (
   id                        bigint not null,
   name                      varchar(255),
   constraint pk_provider primary key (id))
+;
+
+create table time (
+  id                        bigint not null,
+  inicio                    timestamp,
+  fin                       timestamp,
+  constraint pk_time primary key (id))
 ;
 
 create table user (
@@ -50,12 +59,14 @@ create sequence observacion_seq;
 
 create sequence provider_seq;
 
+create sequence time_seq;
+
 create sequence user_seq;
 
 alter table observacion add constraint fk_observacion_provider_1 foreign key (provider_id) references provider (id) on delete restrict on update restrict;
 create index ix_observacion_provider_1 on observacion (provider_id);
-alter table observacion add constraint fk_observacion_indicator_2 foreign key (indicator_id) references indicador (id) on delete restrict on update restrict;
-create index ix_observacion_indicator_2 on observacion (indicator_id);
+alter table observacion add constraint fk_observacion_indicador_2 foreign key (indicador_id) references indicador (id) on delete restrict on update restrict;
+create index ix_observacion_indicador_2 on observacion (indicador_id);
 alter table observacion add constraint fk_observacion_area_3 foreign key (area_id) references area (id) on delete restrict on update restrict;
 create index ix_observacion_area_3 on observacion (area_id);
 
@@ -73,6 +84,8 @@ drop table if exists observacion;
 
 drop table if exists provider;
 
+drop table if exists time;
+
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
@@ -84,6 +97,8 @@ drop sequence if exists indicador_seq;
 drop sequence if exists observacion_seq;
 
 drop sequence if exists provider_seq;
+
+drop sequence if exists time_seq;
 
 drop sequence if exists user_seq;
 

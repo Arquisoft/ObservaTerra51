@@ -4,9 +4,7 @@ import models.Observacion;
 import parsers.WhoParser;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.error403;
-import views.html.index2;
-import views.html.list;
+import views.html.*;
 
 public class Application extends Controller {
     private static String  URL = "http://apps.who.int/gho/athena/data/GHO/WHOSIS_000002,WHOSIS_000001,WHOSIS_000015.html?profile=ztable&filter=COUNTRY:*;REGION:AFR;REGION:AMR;REGION:SEAR;REGION:EUR;REGION:EMR;REGION:WPR;SEX:*";
@@ -62,6 +60,10 @@ public class Application extends Controller {
     	 */
 //        return ok(views.html.statisticsMain.render());
     	return TODO; // Esto dice: NotImplementedYet
+    }
+    
+    public static Result showProfile() {
+    	return ok(profile.render());
     }
 
 }

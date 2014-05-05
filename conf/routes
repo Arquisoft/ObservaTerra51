@@ -22,7 +22,7 @@ POST        /signup                         controllers.SignUp.submit()
 #Log In (falta sesion)
 GET         /login                          controllers.Login.blank()
 POST        /login                          controllers.Login.submit()
-POST        /logoff                         controllers.Login.logoff()
+GET         /logoff                         controllers.Login.logoff()
 
 #Switch Language (i18n)
 GET         /home/:slanguage                controllers.Application.switchLanguage(slanguage: String)
@@ -36,3 +36,6 @@ GET         /json/countries                 controllers.API.countries()
 GET         /json/country/:name             controllers.API.country(name:String)
 GET         /json/observations              controllers.API.observations()
 GET         /json/observations/:area        controllers.API.observationsByArea(area:String)
+
+#Profile
+GET			/profile						controllers.Application.showProfile()
