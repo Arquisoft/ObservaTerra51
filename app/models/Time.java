@@ -6,9 +6,10 @@ import javax.persistence.*;
 /**
  * @version 1.0 with JPA
  */
+@Entity
 public class Time extends Model {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 100L;
 
 	@Id
     @GeneratedValue
@@ -33,5 +34,5 @@ public class Time extends Model {
     	inicio = new Date();
     	fin = new Date();
     }
-	
+
 }

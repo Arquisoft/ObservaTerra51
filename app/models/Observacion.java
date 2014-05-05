@@ -6,6 +6,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,11 @@ public class Observacion extends Model{
     @Constraints.Required
     public int value;
 
+    @Constraints.Required
+    public Date inicio;
+
+    @Constraints.Required
+    public Date fin;
 
 
     // Faltaria el tiempo (instante inicio + instante final o Time con polimorfismo?)
@@ -50,7 +56,7 @@ public class Observacion extends Model{
         this.value = value;
 	}
 
-    public Observacion(String providerName, String indicatorName, Area area, String measure, int value){
+    public Observacion(String providerName, String indicatorName, Area area, String measure, int value,Date init,Date end){
         provider = Provider.findByName(providerName);
         indicador = Indicador.findByName(indicatorName);
         this.measure = measure;
@@ -60,6 +66,8 @@ public class Observacion extends Model{
             case "Province" : this.area = Province.findByName(area.name);break;
             case "Continent" : this.area = Continent.findByName(area.name);break;
         }
+        this.inicio = init;
+        this.fin = end;
 
     }
 
@@ -89,7 +97,7 @@ public class Observacion extends Model{
             throw new PersistenceException("Element already exists");
     }
 
-    public static Observacion create(String providerName, String indicatorName, Area area, String measure, int value) throws PersistenceException {
+    public static Observacion create(String providerName, String indicatorName, Area area, String measure, int value,Date init,Date end) throws PersistenceException {
 
         String query="find observacion where provider.name=:providerName and indicador.name=:indicatorName and area.name=:areaName and measure=:measure and value=:value";
         String query2="find observacion where value=:value and area.name like :areaName";
@@ -99,11 +107,11 @@ public class Observacion extends Model{
                 .ilike("area.name",area.name)
                 .ilike("provider.name",providerName)
                 .eq("measure",measure)
-//                .eq("value",value)            //Lo dejamos comentado hasta que introduzcamos el tiempo como variable a tener en cuenta en nuestras observaciones
+                .eq("value",value)            //Lo dejamos comentado hasta que introduzcamos el tiempo como variable a tener en cuenta en nuestras observaciones
                 .findList();
 
         if(observaciones.size() < 1) {
-            Observacion observacion = new Observacion(providerName, indicatorName, area, measure, value);
+            Observacion observacion = new Observacion(providerName, indicatorName, area, measure, value,init,end);
             observacion.save();
             return observacion;
         }else
@@ -115,7 +123,7 @@ public class Observacion extends Model{
     }
 
     /**
-     * Return a page of computer
+     * Return a page of observations
      *
      * @param page Page to display
      * @param pageSize Number of observations per page

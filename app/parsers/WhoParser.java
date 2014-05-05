@@ -11,6 +11,9 @@ import org.jsoup.select.Elements;
 
 import javax.persistence.PersistenceException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +30,8 @@ public class WhoParser {
     private String indicatorName ="";
     private String countryName="";
     private int value;
+    private Date initDate;
+    private Date endDate;
 
     private Document document;
     private Set<String> countries = new HashSet<String>();
@@ -103,6 +108,9 @@ public class WhoParser {
         //Provider (This parser is only for World Health)
         Provider.create(new Provider(providerName));
         }catch(PersistenceException p){}//We do nothing, we simply avoid that Provider creation
+
+        //Time
+
     }
 
     private void uploadObservations(Element table){
@@ -117,15 +125,38 @@ public class WhoParser {
                 Elements a = rowColumns.get(0).select("a");
                 String indicatorPlusMeasure = a.get(0).text();
                 indicatorMeasureSplitter(indicatorPlusMeasure);
+                String year = rowColumns.get(2).text();
                 countryName=rowColumns.get(5).text();
                 value = Integer.parseInt(rowColumns.get(7).text());
 
+                //We get the real dates from the string
+                createDates(year);
+
                 //We create the observation an upload it to the DB
                 try {
-                    Observacion.create(providerName,indicatorName,new Country(countryName),measure,value);
+                    Observacion.create(providerName,indicatorName,new Country(countryName),measure,value,initDate,endDate);
                 }catch(PersistenceException p){}//We do nothing, we simply avoid that Observation creation
             }
         }
+    }
+
+    private void createDates(String year) {
+        String in = year + "-01-01";
+        String end = year + "-12-31";
+
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+
+            initDate = formatoDelTexto.parse(in);
+            endDate = formatoDelTexto.parse(end);
+
+        } catch (ParseException ex) {
+
+            ex.printStackTrace();
+        }
+
+
     }
 
     /**

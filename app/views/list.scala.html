@@ -70,6 +70,8 @@
                     @header("value", Messages("observations.value"))
                     @header("area.name", Messages("observations.area"))
                     @header("provider.name", Messages("observations.provider"))
+                    @header("inicio",Messages("observations.initDate"))
+                    @header("fin",Messages("observations.endDate"))
                 </tr>
             </thead>
             <tbody>
@@ -106,6 +108,20 @@
                         } else {
                             @observacion.provider.name
                         }
+                        </td>
+                        <td>
+                            @if(observacion.inicio == null) {
+                            <em>-</em>
+                            } else {
+                            @observacion.inicio.toString()
+                            }
+                        </td>
+                        <td>
+                            @if(observacion.fin == null) {
+                            <em>-</em>
+                            } else {
+                            @observacion.fin.toString()
+                            }
                         </td>
                     </tr>
                 }
