@@ -42,8 +42,8 @@ public class SignUp extends Controller {
         
         // Check if the username is valid
         if(!filledForm.hasErrors()) {
-
-            User user = filledForm.get();
+            //String username, String email, String password,String country,String address,Integer age
+            User user = new User(filledForm.get().username,filledForm.get().email,filledForm.get().password,filledForm.get().country,filledForm.get().address,filledForm.get().age);
             try {
                 User.create(user);
 

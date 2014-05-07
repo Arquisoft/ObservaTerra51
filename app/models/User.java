@@ -2,12 +2,10 @@ package models;
 
 import play.data.validation.Constraints.*;
 import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
-import play.libs.*;
+import utils.AES;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 import java.util.List;
 
 /**
@@ -48,7 +46,7 @@ public class User extends Model{
     public User(String username, String email, String password,String country,String address,Integer age) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.password = AES.encrypt(password);//We encrypt the password, before uploading it to the DB
         this.address = address;
         this.country = country;
         this.age = age;

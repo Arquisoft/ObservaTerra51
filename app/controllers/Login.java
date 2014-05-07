@@ -5,6 +5,7 @@ import models.UserLogin;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.AES;
 import views.html.index2;
 import views.html.error403;
 
@@ -39,7 +40,8 @@ public class Login extends Controller {
                 filledForm.reject("username", "User and password doesn't match");
 
             else{
-                if(user.password.equals(filledForm.get().password))
+                String decrytpedPassword = AES.decrypt(user.password);
+                if(decrytpedPassword.equals(filledForm.get().password))//We check if decrypted password matches
                 {
                     //We put the user in session
                     session().put("login", filledForm.get().username);
