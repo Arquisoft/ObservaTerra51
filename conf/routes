@@ -36,6 +36,7 @@ GET         /json/countries                 controllers.API.countries()
 GET         /json/country/:name             controllers.API.country(name:String)
 GET         /json/observations              controllers.API.observations()
 GET         /json/observations/:area        controllers.API.observationsByArea(area:String)
+POST	    /json/observation/:providerName/:indicatorName/:areaName/:measure/:value/:initialDate/:endDate	                        controllers.API.addObservation(providerName:String, indicatorName:String,areaName:String,measure:String,value:String,initialDate:String,endDate:String)
 
 #Profile
-GET			/profile						controllers.Application.showProfile()
+GET         /profile                        controllers.Application.showProfile()
