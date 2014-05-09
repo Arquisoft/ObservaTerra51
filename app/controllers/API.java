@@ -1,7 +1,9 @@
 package controllers;
 
 import models.Country;
+import models.Indicador;
 import models.Observacion;
+import models.Provider;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -42,6 +44,14 @@ public class API extends Controller{
         try {
             Country.create(country);
         }catch(PersistenceException p){}//We do nothing, we simply avoid that Country creation
+
+        try {
+            Provider.create(new Provider(providerName));
+        }catch(PersistenceException p){}//We do nothing, we simply avoid that creation
+
+        try {
+            Indicador.create(new Indicador(indicatorName));
+        }catch(PersistenceException p){}//We do nothing, we simply avoid that creation
 
         //Value
         int intValue = Integer.parseInt(value);//Will throw Exception if the value is not a real integer...

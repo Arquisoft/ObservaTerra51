@@ -74,4 +74,10 @@ public class User extends Model{
         find.ref(username).delete();
     }
 
+    public static void removeAll(){
+        for (User user: all()) {
+            user.delete();
+        }
+    }
+
 }

@@ -122,6 +122,12 @@ public class Observacion extends Model{
        find.ref(id).delete();
     }
 
+    public static void removeAll() {
+        for (Observacion obs: all()) {
+            obs.delete();
+        }
+    }
+
     /**
      * Return a page of observations
      *

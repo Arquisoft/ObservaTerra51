@@ -47,7 +47,7 @@ public class Provider extends Model{
         return list.get(0);
     }
 
-    public static Provider create (Provider provider){
+    public static Provider create (Provider provider)throws PersistenceException{
         if(findByName(provider.name) == null){
             provider.save();
             return provider;

@@ -41,7 +41,7 @@ public class Indicador extends Model{
         return Indicador.find.byId(id);
     }
 
-    public static Indicador findByName(String name){
+    public static Indicador findByName(String name)throws PersistenceException{
         List<Indicador> list = new ArrayList<Indicador>(find.where().ilike("name", name).findList()); //insensitive search
 
         if(list.isEmpty())
@@ -63,5 +63,10 @@ public class Indicador extends Model{
 
     public static void remove(Long id){
         find.ref(id).delete();
+    }
+
+    public static void removeAll(){
+        for(Indicador ind : all())
+            ind.delete();
     }
 }

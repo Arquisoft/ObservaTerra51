@@ -25,6 +25,8 @@ public abstract class Area extends Model {
 
 	private static final long serialVersionUID = 1L;
 
+    public static Finder<Long,Area> findArea = new Finder<Long, Area>(Long.class, Area.class);
+
 	@Id
     @GeneratedValue
     public Long id;
@@ -35,6 +37,10 @@ public abstract class Area extends Model {
     public String type(){
         return "";
     }
-    
-    
+
+
+    public static void removeALlArea(){
+        for(Area area :findArea.all())
+            area.delete();
+    }
 }
