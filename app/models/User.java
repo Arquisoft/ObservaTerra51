@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.Max;
@@ -21,6 +22,7 @@ import utils.AES;
  *
  */
 @Entity
+@Table(name="userDB")
 public class User extends Model{
 
 	/**

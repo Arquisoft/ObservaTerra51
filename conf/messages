@@ -51,6 +51,7 @@ signup_now 			=	Sign up!
 # more login strings
 user		=	User
 disconnect	=	Disconnect
+profile		=	Profile
 
 # bottom bar
 footer_message	=	ObservaTerra is a project developed by the University of Oviedo.
@@ -67,6 +68,8 @@ observations.measure	=	Measure
 observations.value		=	Value
 observations.area		=	Area
 observations.provider	=	Provider
+observations.initDate	=	Begin
+observations.endDate	=	End
 
 #registration form
 username.help			=	Please choose a valid username.

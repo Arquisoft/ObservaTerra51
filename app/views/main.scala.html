@@ -1,4 +1,4 @@
-@(title: String="", nav: String = "")(content: Html) <!-- First goes all the other non-implicit "parameters" -->
+@(title: String="ObservaTerra51", nav: String = "")(content: Html) <!-- First goes all the other non-implicit "parameters" -->
 
 @import play.i18n._
 
@@ -26,12 +26,12 @@
                         <li>
                             <a class="top" href="@routes.Application.home()">@Messages.get("main")</a>
                         </li>
-                        <li class="@("active".when(nav == "signup"))">
-                            <a class="top" href="@routes.SignUp.blank()">@Messages.get("signup")</a>
-                        </li>
                         <!-- Note that you dont need to put the "magic" -->
                         <!-- Not Logged in -->
                         @if(session.get("login") == null || session.get("login").equals("")) {
+                        	<li class="@("active".when(nav == "signup"))">
+                            	<a class="top" href="@routes.SignUp.blank()">@Messages.get("signup")</a>
+                        	</li>
                             <li class="@("active".when(nav == "login"))">
                                 <a class="top" href="@routes.Login.blank()">@Messages.get("login")</a>
                             </li>

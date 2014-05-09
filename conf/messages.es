@@ -49,6 +49,7 @@ signup_now 	=	Regístrese!
 # more login strings
 user	=	Usuario
 disconnect	=	Desconectar
+profile		=	Perfil
 
 # bottom bar
 footer_message	=	ObservaTerra es un proyecto realizado en la Universidad de Oviedo.
@@ -64,7 +65,9 @@ observations.indicator	=	Indicador
 observations.measure	=	Medida
 observations.value		=	Valor
 observations.area		=	Área
-observations.provider	=	Provider
+observations.provider	=	Proveedor
+observations.initDate	=	Inicio
+observations.endDate	=	Fin
 
 #registration form
 username.help	=	Por favor, escoge un usuario válido.
