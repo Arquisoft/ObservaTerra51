@@ -4,8 +4,9 @@ ObservaTerra51
 ObservaTerra51
 
 ==== Integrantes ==== 
- - Fernando Rodríguez Sánchez : UO219560
- - 
+ - Gabriel Calvo García			: UO222522
+ - Daniel Lebredo Acebal		: UO227826
+ - Fernando Rodríguez Sánchez	: UO219560
  
 ==== Anotaciones ====
 
