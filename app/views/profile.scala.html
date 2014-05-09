@@ -1,4 +1,4 @@
-@(user:String)
+@(user: User)
 
 @import helper._
 
@@ -7,7 +7,7 @@
 @main(title="Profile",nav="profile") {
 
 <div class="intro">
-	<h1>@Messages.get("profWelcome") @user -- @Messages.get("docTableProf") </h1>
+	<h1>@Messages.get("profWelcome") @user.username -- @Messages.get("docTableProf") </h1>
 
 	<div id="formularioUpload">
 		@form(action = routes.Application.showProfile, 'enctype ->"multipart/form-data") { 
@@ -23,21 +23,14 @@
 	<div style="padding-top:10px">	
 		<table>
 			<tbody>
-				<tr>
-                    <td>
-                        <a href="#">Guía de Aprendizaje.pdf</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    	<a href="#">Apuntes tema 1.docx</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">Examen 2012-2013.jpg</a>
-                    </td>
-                </tr>
+				@for(doc <- user.documentos) {
+					<tr>
+						<td>doc.name</td>
+						<td>doc.extension</td>
+						<td><a href="@{Application.downloadFile(doc.id)}">@Messages.get("descargaDoc")</a></td>
+						<td><a href="@{Application.removeFile(doc.id)}">@Messages.get("borrarDoc")</a></td>
+					</tr>
+				}
             </tbody>
 		</table>
 	</div>

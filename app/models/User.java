@@ -1,12 +1,19 @@
 package models;
 
-import play.data.validation.Constraints.*;
-import play.db.ebean.Model;
-import utils.AES;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.OneToMany;
+
+import play.data.validation.Constraints.Email;
+import play.data.validation.Constraints.Max;
+import play.data.validation.Constraints.Min;
+import play.data.validation.Constraints.MinLength;
+import play.data.validation.Constraints.Required;
+import play.db.ebean.Model;
+import utils.AES;
 
 /**
  * 
@@ -15,8 +22,13 @@ import java.util.List;
  */
 @Entity
 public class User extends Model{
-   
-    public interface All {}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public interface All {}
 
     @Id
     @Required(groups = {All.class})
@@ -39,9 +51,14 @@ public class User extends Model{
 
     @Min(value = 18, groups = {All.class}) @Max(value = 120, groups = {All.class})
     public Integer age;
+    
+    @OneToMany
+    public List<Document> documentos;
 
     
-    public User() {}
+    public User() {
+    	documentos = new ArrayList<Document>();
+    }
     
     public User(String username, String email, String password,String country,String address,Integer age) {
         this.username = username;
@@ -50,6 +67,8 @@ public class User extends Model{
         this.address = address;
         this.country = country;
         this.age = age;
+        
+        documentos = new ArrayList<Document>();
     }
 
     public static Model.Finder<String,User> find = new Finder<String, User>(String.class, User.class);

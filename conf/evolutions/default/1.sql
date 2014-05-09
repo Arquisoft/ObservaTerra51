@@ -10,6 +10,14 @@ create table area (
   constraint pk_area primary key (id))
 ;
 
+create table document (
+  id                        bigint not null,
+  user_username             varchar(255),
+  extension                 varchar(255),
+  name                      varchar(255),
+  constraint pk_document primary key (id))
+;
+
 create table indicador (
   id                        bigint not null,
   name                      varchar(255),
@@ -53,6 +61,8 @@ create table user (
 
 create sequence area_seq;
 
+create sequence document_seq;
+
 create sequence indicador_seq;
 
 create sequence observacion_seq;
@@ -63,12 +73,14 @@ create sequence time_seq;
 
 create sequence user_seq;
 
-alter table observacion add constraint fk_observacion_provider_1 foreign key (provider_id) references provider (id) on delete restrict on update restrict;
-create index ix_observacion_provider_1 on observacion (provider_id);
-alter table observacion add constraint fk_observacion_indicador_2 foreign key (indicador_id) references indicador (id) on delete restrict on update restrict;
-create index ix_observacion_indicador_2 on observacion (indicador_id);
-alter table observacion add constraint fk_observacion_area_3 foreign key (area_id) references area (id) on delete restrict on update restrict;
-create index ix_observacion_area_3 on observacion (area_id);
+alter table document add constraint fk_document_user_1 foreign key (user_username) references user (username) on delete restrict on update restrict;
+create index ix_document_user_1 on document (user_username);
+alter table observacion add constraint fk_observacion_provider_2 foreign key (provider_id) references provider (id) on delete restrict on update restrict;
+create index ix_observacion_provider_2 on observacion (provider_id);
+alter table observacion add constraint fk_observacion_indicador_3 foreign key (indicador_id) references indicador (id) on delete restrict on update restrict;
+create index ix_observacion_indicador_3 on observacion (indicador_id);
+alter table observacion add constraint fk_observacion_area_4 foreign key (area_id) references area (id) on delete restrict on update restrict;
+create index ix_observacion_area_4 on observacion (area_id);
 
 
 
@@ -77,6 +89,8 @@ create index ix_observacion_area_3 on observacion (area_id);
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists area;
+
+drop table if exists document;
 
 drop table if exists indicador;
 
@@ -91,6 +105,8 @@ drop table if exists user;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists area_seq;
+
+drop sequence if exists document_seq;
 
 drop sequence if exists indicador_seq;
 

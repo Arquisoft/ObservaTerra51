@@ -1,7 +1,11 @@
 package controllers;
 
+import models.Document;
 import models.Observacion;
+import models.User;
 import parsers.WhoParser;
+import play.mvc.Http.MultipartFormData;
+import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -67,7 +71,60 @@ public class Application extends Controller {
     	if (session().get("login") == null || session().get("login").compareToIgnoreCase("") == 0)
     		return ok(error403.render("403 Forbidden"));
     	else
-    		return ok(profile.render(session().get("login")));
+    		return ok(profile.render(User.findByUsername(session().get("login"))));
+    }
+    
+    public static Result uploadFile() {
+    	
+    	MultipartFormData part = request().body().asMultipartFormData();
+    	FilePart file = part.getFile("file");
+    	
+    	String filename = file.getFilename();
+    	String[] parts = filename.split(".");
+    	String name = parts[0];
+    	String ext;
+    	
+    	try {
+    		ext = parts[1];
+    	}
+    	catch (ArrayIndexOutOfBoundsException iobe) {
+    		ext = "-";
+    	}
+    	
+    	User user = User.findByUsername(session().get("login"));
+    	
+    	Document doc = new Document(file.getFile(), ext, user, name);
+    	
+    	user.documentos.add(doc);
+    	
+    	doc.save();
+    	user.save();
+    	
+    	return ok(profile.render(user));
+    }
+    
+    public static Result removeFile(Long id) {
+    	User user = User.findByUsername(session().get("login"));
+    	
+    	for (Document doc:user.documentos)
+    		if (doc.id == id)
+    			user.documentos.remove(doc);
+    	
+    	return ok(profile.render(user));
+    }
+    
+    public static Result downloadFile(Long id) {
+    	User user = User.findByUsername(session().get("login"));
+    	
+    	Document ret = null;
+    	
+    	for (Document doc:user.documentos)
+    		if (doc.id == id){
+    			ret = doc;
+    			break;
+    		}
+    	
+    	return ok(ret.file);
     }
 
 }

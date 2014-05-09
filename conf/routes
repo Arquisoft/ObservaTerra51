@@ -40,3 +40,4 @@ POST	    /json/observation/:providerName/:indicatorName/:areaName/:measure/:valu
 
 #Profile
 GET         /profile                        controllers.Application.showProfile()
+POST		/profile						controllers.Application.uploadFile()
